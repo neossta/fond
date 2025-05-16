@@ -58,7 +58,7 @@ export default function ByRegions() {
                         {regionsWithFinalists.find(r => r.code === region)?.jury?.map(f => (
                             <GridItem>
                                 {f.image
-                                    ? <img src={f.image} />
+                                    ? <img src={f.image} loading="lazy" alt="Финалист"/>
                                     : <NoImageBlock></NoImageBlock>
                                 }
                                 <InfoBlock>
