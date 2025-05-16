@@ -30,7 +30,7 @@ export { default as Support7 } from './support-7.png';
 export { default as DocImage } from './doc.png';
 export { default as DocImageSvg } from './doc.svg';
 export { default as SchoolPainting } from './school-painting.png';
-export { default as Main } from './main.gif';
+// export { default as Main } from './main.gif';
 export { default as Poster } from './poster.png';
 export { default as Winner1 } from './winner-1.png';
 export { default as Winner2 } from './winner-2.png';
