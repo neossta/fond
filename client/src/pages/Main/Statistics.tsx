@@ -27,7 +27,7 @@ export default function Statisctics() {
             </Row>
         </Wrapper>
     );
-};
+}
 
 function StatiscticsBlock(props: { title: string, number: number, measure?: string }) {
     return <Block>

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import CarouselComponent from "../../components/carousel";
-import { AwardPic1, AwardPic10, AwardPic11, AwardPic12, AwardPic13, AwardPic14, AwardPic2, AwardPic3, AwardPic4, AwardPic5, AwardPic6, AwardPic7, AwardPic8, AwardPic9, Winner1, } from "../../assets/img";
+import { AwardPic1, AwardPic10, AwardPic11, AwardPic12, AwardPic13, AwardPic14, AwardPic2, AwardPic3, AwardPic4, AwardPic5, AwardPic6, AwardPic7, AwardPic8, AwardPic9 } from "../../assets/img";
 import { Container } from "../../styled/components";
 import { TitleMedium } from "../../components/text/TitleMedium";
 import { $phoneWidth } from "../../styled/variables";
@@ -34,7 +34,7 @@ export default function PicturesBlock() {
             </CarouselComponent>
         </Wrapper>
     )
-};
+}
 
 const Wrapper = styled(Container)`
   padding-top: 6rem;

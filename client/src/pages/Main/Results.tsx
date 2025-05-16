@@ -27,7 +27,7 @@ export default function Results() {
         </>}
     </Wrapper>
   )
-};
+}
 
 const Wrapper = styled(Container)`
    align-items: center;

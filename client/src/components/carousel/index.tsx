@@ -41,7 +41,7 @@ export default function CarouselComponent({ children, theme }: CarouselProps) {
             </ScrollTrack>
         </div>
     );
-};
+}
 
 const ScrollContainer = styled.div`
   display: flex;

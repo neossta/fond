@@ -92,7 +92,7 @@ export default function Winners() {
             </CarouselComponent>
         </Container>
     )
-};
+}
 
 const Container = styled.div`
     width: 100%;

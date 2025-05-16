@@ -80,7 +80,7 @@ export default function Media() {
             </Row>
         </Wrapper>
     )
-};
+}
 
 const Wrapper = styled(Container)`
    align-items: center;

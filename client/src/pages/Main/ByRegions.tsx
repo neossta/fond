@@ -86,7 +86,7 @@ export default function ByRegions() {
             </ButtonsContainer>
         </Container>
     )
-};
+}
 
 const Container = styled.div`
   width: 100%;

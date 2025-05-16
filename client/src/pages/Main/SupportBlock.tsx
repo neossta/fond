@@ -24,7 +24,7 @@ export default function SupportBlock() {
 
         </Wrapper>
     )
-};
+}
 
 const Wrapper = styled(Container)`
   border-radius: 20px;
