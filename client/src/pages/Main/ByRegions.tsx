@@ -184,7 +184,7 @@ const InfoBlock = styled.div`
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  background-color: rgba(37, 97, 43, 0.4);
+  background-color: rgba(37, 97, 43, 0.7);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 1;

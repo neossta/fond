@@ -134,6 +134,6 @@ export { default as Finalist55 } from './finalists/finalist-55.png';
 export { default as Finalist56 } from './finalists/finalist-56.png';
 export { default as Finalist57 } from './finalists/finalist-57.png';
 export { default as Finalist58 } from './finalists/finalist-58.png';
-export { default as Finalis59 } from './finalists/finalist-59.png';
+export { default as Finalist59 } from './finalists/finalist-59.png';
 export { default as Finalist60 } from './finalists/finalist-60.png';
 export { default as Finalist61 } from './finalists/finalist-61.png';

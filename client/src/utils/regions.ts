@@ -1,4 +1,4 @@
-import { Finalist1, Finalist10, Finalist11, Finalist12, Finalist13, Finalist14, Finalist15, Finalist16, Finalist2, Finalist3, Finalist4, Finalist5, Finalist6, Finalist7, Finalist8, Finalist9, Winner1, Winner10, Winner11, Winner12, Winner2, Winner4, Winner5, Winner6, Winner7, Winner8, Winner9 } from "../assets/img";
+import { Expert3, Expert9, Finalist1, Finalist10, Finalist11, Finalist12, Finalist13, Finalist14, Finalist15, Finalist16, Finalist17, Finalist18, Finalist19, Finalist2, Finalist20, Finalist21, Finalist22, Finalist23, Finalist24, Finalist25, Finalist26, Finalist27, Finalist28, Finalist29, Finalist3, Finalist30, Finalist31, Finalist32, Finalist33, Finalist34, Finalist36, Finalist37, Finalist38, Finalist39, Finalist4, Finalist40, Finalist41, Finalist42, Finalist43, Finalist44, Finalist45, Finalist46, Finalist47, Finalist48, Finalist49, Finalist5, Finalist50, Finalist51, Finalist52, Finalist53, Finalist54, Finalist55, Finalist56, Finalist57, Finalist58, Finalist59, Finalist6, Finalist60, Finalist61, Finalist7, Finalist8, Finalist9, Team2, Winner1, Winner10, Winner11, Winner12, Winner13, Winner2, Winner3, Winner4, Winner5, Winner6, Winner7, Winner8, Winner9 } from "../assets/img";
 
 interface Region {
     title: string;
@@ -79,7 +79,7 @@ export const regionsData: Record<string, Region> = {
                 name: 'Забелина Екатерина Геннадьевна',
                 organisation: 'МБОУ СОШ с УИОП',
                 city: 'Алдан',
-                image: Winner2,
+                image: Finalist39,
             }]
         }
     },
@@ -124,6 +124,7 @@ export const regionsData: Record<string, Region> = {
                 name: 'Омельяненко Татьяна Валерьевна',
                 organisation: 'МБОУ Школа №90',
                 city: 'Железногорск',
+                image: Finalist17,
             },
             {
                 name: 'Чепиков Иван Андреевич',
@@ -236,21 +237,25 @@ export const regionsData: Record<string, Region> = {
                     name: 'Тункова Юлия Юрьевна',
                     organisation: 'МБОУ Лицей',
                     city: 'Арзамас, Нижегородская область',
+                    image: Winner10,
                 },
                 {
                     name: 'Новикова Юлия Ивановна',
                     organisation: 'МАОУ СШ №3',
                     city: 'Кстово, Нижегородская область',
+                    image: Finalist20,
                 },
                 {
                     name: 'Кузнецов Роман Владимирович',
                     organisation: 'МБОУ Школа № 160',
                     city: 'Нижний Новгород',
+                    image: Finalist38,
                 },
                 {
                     name: 'Сергеичева Наталья Юрьевна',
                     organisation: 'МАОУ Гимназия №2',
                     city: 'Нижний Новгород',
+                    image: Finalist23,
                 },
             ]
         }
@@ -263,22 +268,26 @@ export const regionsData: Record<string, Region> = {
                     name: 'Овчинников Алексей Алексеевич ',
                     organisation: 'МБОУ СОШ № 148',
                     city: 'Купино',
+                    image: Winner3,
                 },
                 {
                     name: 'Береснев Владислав Юрьевич',
                     organisation: 'СОШ № 172',
                     city: 'Новосибирск',
+                    image: Finalist31,
                 },
                 {
                     name: 'Стругач Софья Александровна ',
                     organisation: 'МБОУ СОШ №187 им. кавалера ордена Мужества Александра Бурмистрова',
                     city: 'Новосибирск',
+                    image: Winner13,
                 }
             ],
             jury: [{
                 name: 'Карпов Дмитрий Сергеевич',
                 organisation: 'член жюри',
                 city: 'Новосибирск',
+                image: Finalist18,
             }]
         }
     },
@@ -289,6 +298,7 @@ export const regionsData: Record<string, Region> = {
                 name: 'Лукьянова Ирина Ришатовна',
                 organisation: 'ЧОУ СОШ Экополис',
                 city: 'Оренбург',
+                image: Finalist59,
             }]
         }
     },
@@ -312,6 +322,7 @@ export const regionsData: Record<string, Region> = {
                 name: 'Золотова Елена Юрьевна',
                 organisation: 'МБОУ СОШ № 4',
                 city: 'Миллерово',
+                image: Finalist29,
             }]
         }
     },
@@ -323,16 +334,19 @@ export const regionsData: Record<string, Region> = {
                     name: 'Романова Алла Владимировна',
                     organisation: 'МБОУ Школа Дневной пансион-84',
                     city: 'Самара',
+                    image: Winner4,
                 },
                 {
                     name: 'Морев Анатолий Игоревич',
                     organisation: 'ГБОУ СОШ №1 ОЦ',
                     city: 'Смышляевка',
+                    image: Finalist61,
                 },
                 {
                     name: 'Бурлакова Татьяна Викторовна ',
                     organisation: 'МБУ Школа №72',
                     city: 'Тольятти',
+                    image: Finalist30,
                 }
             ]
         }
@@ -347,6 +361,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Казанцева Юлия Владиславовна ',
                     organisation: 'МАОУ Гимназия №37',
                     city: 'Екатеринбург',
+                    image: Finalist50,
                 }
             ],
             jury: [
@@ -354,26 +369,31 @@ export const regionsData: Record<string, Region> = {
                     name: 'Балакаев Михаил Геннадьевич',
                     organisation: 'член жюри',
                     city: 'Екатеринбург',
+                    image: Finalist60,
                 },
                 {
                     name: 'Гаврилин Борис Александрович',
                     organisation: 'член жюри',
                     city: 'Екатеринбург',
+                    image: Team2,
                 },
                 {
                     name: 'Захаров Артем Андреевич',
                     organisation: 'член жюри',
                     city: 'Екатеринбург',
+                    image: Finalist42,
                 },
                 {
                     name: 'Пономарев Дмитрий Юрьевич',
                     organisation: 'член жюри',
                     city: 'Екатеринбург',
+                    image: Finalist51,
                 },
                 {
                     name: 'Храмцов Михаил Вадимович',
                     organisation: 'член жюри',
                     city: 'Екатеринбург',
+                    image: Finalist43,
                 },
 
             ]
@@ -388,6 +408,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Аглямов Николай Александрович',
                     organisation: 'МОУ Верхневолжская СОШ',
                     city: 'Рязаново',
+                    image: Finalist27,
                 }
             ]
         }
@@ -410,6 +431,7 @@ export const regionsData: Record<string, Region> = {
                 name: 'Плесовских Олег Леонидович',
                 organisation: 'Ильинская СОШ - филиал МАОУ Новоселезнёвская СОШ',
                 city: 'Ильинка',
+                image: Winner11,
             }]
         }
     },
@@ -420,6 +442,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Штаева Валентина Петровна',
                     organisation: 'школа',
                     city: 'Радищево',
+                    image: Finalist47,
                 }
             ]
         }
@@ -430,6 +453,7 @@ export const regionsData: Record<string, Region> = {
                 name: 'Чернобривец Иван Георгиевич',
                 organisation: 'МОУ СОШ № 5',
                 city: 'Магнитогорск',
+                image: Finalist45,
             }]
         }
     },
@@ -441,6 +465,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Смирнов Никита Алексеевич ',
                     organisation: 'МОУ Средняя школа №91 ИнТех',
                     city: 'Ярославль',
+                    image: Finalist36,
                 },
             ]
         }
@@ -471,16 +496,19 @@ export const regionsData: Record<string, Region> = {
                     name: 'Кадыков Александр Николаевич',
                     organisation: 'Лицей РАНХиГС',
                     city: 'Москва',
+                    image: Finalist48,
                 },
                 {
                     name: 'Лихачев Григорий Дмитриевич',
                     organisation: 'ГБОУ Школа №11238',
                     city: 'Москва',
+                    image: Finalist34,
                 },
                 {
                     name: 'Маркин Виктор Лелнидович',
                     organisation: 'ОАНО Наукославль',
                     city: 'Москва',
+                    image: Finalist55,
                 },
                 {
                     name: 'Меньшинина Елена Сергеевна',
@@ -492,6 +520,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Пирогов Дмитрий Викторович',
                     organisation: 'ОЧУ Православная Свято-Петровская школа',
                     city: 'Москва',
+                    image: Finalist57,
                 },
                 {
                     name: 'Плецельман Виктория Львовна',
@@ -503,16 +532,13 @@ export const regionsData: Record<string, Region> = {
                     name: 'Стригин Владимир Олегович',
                     organisation: 'ГБОУ Измайловская Школа № 1508',
                     city: 'Москва',
+                    image: Finalist40,
                 },
                 {
                     name: 'Суздальцев Илья Алексеевич',
                     organisation: 'ГБОУ Школа №1381',
                     city: 'Москва',
-                },
-                {
-                    name: 'Устюжанинов Илья Дмитриевич',
-                    organisation: 'член жюри',
-                    city: 'Москва',
+                    image: Finalist56,
                 },
                 {
                     name: 'Хайдуков Герман Николаевич',
@@ -535,11 +561,13 @@ export const regionsData: Record<string, Region> = {
                     name: 'Меньшиков Александр Эдуардович',
                     organisation: 'МОУ Лицей № 23',
                     city: 'Подольск',
+                    image: Finalist54,
                 },
                 {
                     name: 'Сажнев Иван Юрьевич',
                     organisation: 'ГБОУ Школа №338',
                     city: 'Сосенское',
+                    image: Finalist33,
                 },
             ],
             jury: [
@@ -547,46 +575,55 @@ export const regionsData: Record<string, Region> = {
                     name: 'Абрамов Андрей Владимирович',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Finalist11,
                 },
                 {
                     name: 'Баев Евгений Викторович',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Finalist58,
                 },
                 {
                     name: 'Грибков Иван Владимирович',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Expert3,
                 },
                 {
                     name: 'Коломиец Артем Валентинович',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Finalist53,
                 },
                 {
                     name: 'Косиченко Иван Никитович',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Expert9,
                 },
                 {
                     name: 'Новиков Петр Алексеевич',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Finalist25,
                 },
                 {
                     name: 'Пивгородняя Елена Артуровна',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Finalist19,
                 },
                 {
                     name: 'Устюжанинов Илья Дмитриевич',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Finalist24,
                 },
                 {
                     name: 'Черных Александр Александрович',
                     organisation: 'член жюри',
                     city: 'Москва',
+                    image: Finalist37,
                 },
             ]
         }
@@ -599,21 +636,25 @@ export const regionsData: Record<string, Region> = {
                     name: 'Павловский Роман Валерьевич ',
                     organisation: 'АНОО Школа им. А.М. Горчакова',
                     city: 'Павловск',
+                    image: Winner5,
                 },
                 {
                     name: 'Битюкова Лариса Анатольевна',
                     organisation: 'ГБОУ СОШ №582',
                     city: 'Санкт-Петербург',
+                    image: Finalist52,
                 },
                 {
                     name: 'Лесниченко Иван Михайлович',
                     organisation: 'ГБОУ школа № 525 им. дважды Героя Советского Союза Г.М. Гречко',
                     city: 'Санкт-Петербург',
+                    image: Finalist32,
                 },
                 {
                     name: 'Медведева Ксения Антоновна',
                     organisation: 'ГБОУ СОШ №172',
                     city: 'Санкт-Петербург',
+                    image: Finalist26,
                 },
             ],
             jury: [
@@ -621,26 +662,31 @@ export const regionsData: Record<string, Region> = {
                     name: 'Барышников Никита Вячеславович',
                     organisation: 'член жюри',
                     city: 'Санкт-Петербург',
+                    image: Finalist41,
                 },
                 {
                     name: 'Бежан Виктор Владимирович',
                     organisation: 'член жюри',
                     city: 'Санкт-Петербург',
+                    image: Finalist21,
                 },
                 {
                     name: 'Иванов Егор Эдуардович',
                     organisation: 'член жюри',
                     city: 'Санкт-Петербург',
+                    image: Finalist46,
                 },
                 {
                     name: 'Кирильчик Денис Викторович',
                     organisation: 'член жюри',
                     city: 'Санкт-Петербург',
+                    image: Finalist28,
                 },
                 {
                     name: 'Масленников Владимир Михайлович',
                     organisation: 'член жюри',
                     city: 'Санкт-Петербург',
+                    image: Finalist22,
                 },
             ]
         }
@@ -679,11 +725,13 @@ export const regionsData: Record<string, Region> = {
                     name: 'Омаров Жаслан Кикпаевич',
                     organisation: 'МОУ СОШ №5',
                     city: 'Надым, ЯНАО',
+                    image: Finalist49,
                 },
                 {
                     name: 'Грязнов Илья Александрович ',
                     organisation: 'МБОУ Сеяхинская школа-интернат',
                     city: 'Сеяха, ЯНАО',
+                    image: Finalist44,
                 },
             ]
         }
