@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { Main } from '../../assets/img';
 import styled from '@emotion/styled';
 import { Container } from '../../styled/components';
 import { $phoneWidth, $primaryColor } from '../../styled/variables';
@@ -8,7 +7,7 @@ export const Offer: FC = () => {
   return (
     <Wrapper>
       <Banner>
-        <img src={Main} alt="Main img" loading="lazy" />
+        <img src={'https://drive.google.com/file/d/1QpzQgqT9Dr2LohEr90t9TZP4LwNzzSFc/view?usp=sharing'} alt="Main img" />
       </Banner>
       <Content>
         <InnerContainer>
