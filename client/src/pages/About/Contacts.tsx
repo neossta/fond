@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
-import { Container, TextSmall, Title } from '../../styled/components';
-import { $lightColor, $phoneWidth, $primaryBg, $primaryColor } from '../../styled/variables';
+import { Container, TextSmall } from '../../styled/components';
+import { $lightColor, $phoneWidth, $primaryColor, $tableWidth } from '../../styled/variables';
 import { TitleMedium } from '../../components/text/TitleMedium';
 
 export const Contacts: FC = () => {
@@ -54,6 +54,9 @@ const Wrapper = styled(Container)`
     margin-top: 4rem;
     padding: 2rem 1.5rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    padding: 4rem 4rem;
+  }
 `;
 
 const Content = styled.div`
@@ -67,6 +70,9 @@ const Content = styled.div`
     gap: 1rem;
     padding-top: 1rem;
   }
+   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+      grid-template-columns: repeat(4, auto);
+      }
 `;
 
 const Item = styled.div`
@@ -74,7 +80,7 @@ const Item = styled.div`
   flex-direction: column;
   background-color: #FFFFFF1A;
   border: 1px solid #FFFFFF4D;
-  border-radius: 20px;
+  border-radius: 2rem;
   padding: 1.5rem;
   > *:not(:last-child) {
     margin-bottom: 0.5rem;
@@ -87,12 +93,19 @@ const Item = styled.div`
     margin-bottom: 1rem;
   }
   } 
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    padding: 0.9rem;
+ }
 `;
 
 const Link = styled.a`
   font-size: 1.2;
   font-weight: 400;
   line-height: 1.3rem;
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.7rem;
+    line-height: 0.9rem;
+ }
 `;
 
 const Label = styled.span`
@@ -100,4 +113,9 @@ const Label = styled.span`
   font-weight: 500;
   line-height: 1.3rem;
   margin-bottom: 3rem;
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.1rem;
+  }
 `;

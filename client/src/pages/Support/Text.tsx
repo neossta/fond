@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import styled from '@emotion/styled';
-import { $lightColor, $phoneWidth, $primaryBg, $primaryColor } from '../../styled/variables';
+import { $lightColor, $phoneWidth, $primaryBg, $primaryColor, $tableWidth } from '../../styled/variables';
 
 export const Text: FC = () => {
   return (
     <Wrapper>
-      <Title>поддержите русских историков</Title>
+      <Title>поддержите <br></br> русских<br></br>историков</Title>
       <Descr>
         Развитие образования в России — наше общее дело. Изменить школу к лучшему способно только
         деятельное сообщество российских учителей. Ради его поддержки мы создали премию «Учитель
@@ -36,6 +36,16 @@ const Title = styled.h1`
     color: ${$lightColor};
     font-weight: 700;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     font-size: 3.6rem;
+    font-weight: 900;
+    color: ${$primaryColor};
+    letter-spacing: normal;
+    line-height: 3.6rem;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 3.5rem;
+    }
 `;
 
 const Descr = styled.p`
@@ -45,7 +55,7 @@ const Descr = styled.p`
   letter-spacing: 0%;
   text-align: left;
   max-width: 33rem;
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     font-size: 1rem;
     line-height: 1.13rem;
     margin-bottom: 1.25rem;

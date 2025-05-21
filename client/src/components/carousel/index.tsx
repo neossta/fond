@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 interface CarouselProps {
@@ -9,6 +9,9 @@ interface CarouselProps {
 export default function CarouselComponent({ children, theme }: CarouselProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [scrollProgress, setScrollProgress] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeftStart, setScrollLeftStart] = useState(0);
 
     const handleScroll = () => {
         if (containerRef.current) {
@@ -24,11 +27,54 @@ export default function CarouselComponent({ children, theme }: CarouselProps) {
         }
     };
 
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!containerRef.current) return;
+
+        setIsDragging(true);
+        setStartX(e.pageX - containerRef.current.offsetLeft);
+        setScrollLeftStart(containerRef.current.scrollLeft);
+
+        e.preventDefault();
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !containerRef.current) return;
+
+        const x = e.pageX - containerRef.current.offsetLeft;
+        const walk = (x - startX) * 3; // Multiply for faster dragging
+        containerRef.current.scrollLeft = scrollLeftStart - walk;
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+    };
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        container.addEventListener('mousemove', handleMouseMove as any);
+        container.addEventListener('mouseup', handleMouseUp);
+        container.addEventListener('mouseleave', handleMouseLeave);
+
+        return () => {
+            container.removeEventListener('mousemove', handleMouseMove as any);
+            container.removeEventListener('mouseup', handleMouseUp);
+            container.removeEventListener('mouseleave', handleMouseLeave);
+        };
+    }, [isDragging, startX, scrollLeftStart]);
+
     return (
         <div>
             <ScrollContainer
                 ref={containerRef}
                 onScroll={handleScroll}
+                onMouseDown={handleMouseDown}
+                $isDragging={isDragging}
             >
                 {React.Children.map(children, (child, index) => (
                     <div key={index} style={{ flex: '0 0 auto' }}>
@@ -37,13 +83,17 @@ export default function CarouselComponent({ children, theme }: CarouselProps) {
                 ))}
             </ScrollContainer>
             <ScrollTrack $theme={theme || 'light'}>
-                <ScrollThumb $theme={theme || 'light'} style={{ width: '20%', transform: `translateX(${scrollProgress}px)` }} />
+                <ScrollThumb $theme={theme || 'light'} style={{
+                    width: '20%',
+                    transform: `translateX(${scrollProgress}px)`,
+                    transition: isDragging ? 'none' : 'transform 0.1s ease-out'
+                }} />
             </ScrollTrack>
         </div>
     );
 }
 
-const ScrollContainer = styled.div`
+const ScrollContainer = styled.div<{ $isDragging?: boolean }>`
   display: flex;
   overflow-x: auto;
   gap: 20px;
@@ -51,6 +101,7 @@ const ScrollContainer = styled.div`
   padding-bottom: 10px;
    -ms-overflow-style: none;
   scrollbar-width: none;
+  user-select: none;
 
   &::-webkit-scrollbar {
     display: none;
@@ -77,6 +128,5 @@ const ScrollThumb = styled.div<{ $theme: 'light' | 'dark' }>`
   position: absolute;
   left: 0;
   top: 0;
-  transition: transform 0.2s ease;
   will-change: transform;
 `;

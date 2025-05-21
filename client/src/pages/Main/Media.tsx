@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Container } from "../../styled/components";
-import { $phoneWidth, $primaryColor } from "../../styled/variables";
+import { $phoneWidth, $primaryColor, $tableWidth } from "../../styled/variables";
 import { TitleMedium } from "../../components/text/TitleMedium";
 import { Media1, Media1Mobile, Media2, Media2Mobile, Media3, Media3Mobile, Media4, Media4Mobile } from "../../assets/img";
 
@@ -37,7 +37,7 @@ export default function Media() {
                             />
                             <img
                                 src={Media2}
-                                alt={'Мел'}
+                                alt={'Москва сейчас'}
                                 loading="lazy"
                             />
                         </picture>
@@ -54,14 +54,14 @@ export default function Media() {
                             />
                             <img
                                 src={Media3}
-                                alt={'Мел'}
+                                alt={'Учительская'}
                                 loading="lazy"
                             />
                         </picture>
                     </a>
                 </Image>
                 <Image>
-                    <a href="https://ug.ru/luchshih-uchitelej-istorii-nagradili-v-moskve/"
+                    <a href="https://obrazovanie.press/news/tpost/pe45i230c1-v-dome-pashkova-naprotiv-kremlya-v-moskv"
                         target="_blank"
                         rel="noopener noreferrer">
                         <picture>
@@ -71,7 +71,7 @@ export default function Media() {
                             />
                             <img
                                 src={Media4}
-                                alt={'Мел'}
+                                alt={'Образование пресс'}
                                 loading="lazy"
                             />
                         </picture>
@@ -92,6 +92,7 @@ const Wrapper = styled(Container)`
     display: flex;
     flex-direction: column;
   }
+    
 `;
 
 const Row = styled.div`
@@ -113,17 +114,24 @@ const Image = styled.div`
   height: 200px;
   display: flex;
   align-items: center;
+
+  picture {
+  display: flex;
+  align-items: center;
+  }
   img {
     object-fit: cover; 
     height: auto;
     width: 100%;
+    margin: 0 auto;
     border-radius: 8px;
 
     :hover {
-    cursor: pointer
+      cursor: pointer;
+      width: 97%;
     }
    }
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     height: auto;
 }
 `;

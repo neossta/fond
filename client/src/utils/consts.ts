@@ -8,8 +8,8 @@ export const NOT_FOUND_ROUTE = '*';
 
 // BREAKPOINTS
 export const SCREEN_LG = 1920;
-export const SCREEN_MD = 776;
-export const SCREEN_SM = 776;
+export const SCREEN_MD = 1023;
+export const SCREEN_SM = 769;
 
 export const MAIL_LINK = 'manager@uchitelistorii.ru';
 export const VK_LINK = 'https://vk.com/rumyantsev_fund';

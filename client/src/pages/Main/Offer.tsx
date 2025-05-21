@@ -1,13 +1,18 @@
 import { FC } from 'react';
 import styled from '@emotion/styled';
 import { Container } from '../../styled/components';
-import { $phoneWidth, $primaryColor } from '../../styled/variables';
+import { $desktopWidth, $phoneWidth, $primaryColor, $tableWidth } from '../../styled/variables';
+import { MainVideoMp4, MainVideoWebm } from '../../assets/video';
 
 export const Offer: FC = () => {
   return (
     <Wrapper>
       <Banner>
-        <img src={'https://drive.google.com/file/d/1QpzQgqT9Dr2LohEr90t9TZP4LwNzzSFc/view?usp=sharing'} alt="Main img" />
+        <video autoPlay loop muted playsInline>
+          <source src={MainVideoWebm} type="video/webm" />
+          <source src={MainVideoMp4} type="video/mp4" />
+          Ваш браузер не поддерживает видео.
+        </video>
       </Banner>
       <Content>
         <InnerContainer>
@@ -47,7 +52,8 @@ const Wrapper = styled(Container)`
 const Banner = styled.div`
   flex: 1;
   border-radius: 1.2rem;
-  img {
+  flex-shrink: 1;
+  video {
     width: 100%;
     border-radius: 20px;
   }
@@ -61,6 +67,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: center;
   max-height: 47.6875rem;
   flex: 0.8;
   @media screen and (max-width: ${$phoneWidth}) {
@@ -73,10 +80,18 @@ const Content = styled.div`
 `;
 
 const InnerContainer = styled.div`
-  width: 75%;
+  max-width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   @media screen and (max-width: ${$phoneWidth}) {
     width: 100%;
+    max-width: 100%;
     padding-top: 2rem;
+  }
+  @media screen and (min-width: ${$desktopWidth}) {
+     width: content-fit;
+     max-width: 84%;
   }
 `;
 
@@ -95,15 +110,25 @@ const Title = styled.h1`
     font-weight: 700;
     margin-bottom: 1rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 3.4rem;
+    font-weight: 900;
+    color: ${$primaryColor};
+    letter-spacing: normal;
+    line-height: 3.4rem;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 3.5rem;
+  }
 `;
 
 const Descr = styled.p`
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.5rem;
-  margin-bottom: 4rem;
+  // margin-bottom: 4rem;
   text-align: left;
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     margin-bottom: 2rem;
     font-size: 1.2rem;
     font-weight: 400;

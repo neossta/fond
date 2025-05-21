@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { $phoneWidth, $primaryColor } from "../../styled/variables";
+import { $phoneWidth, $primaryColor, $tableWidth } from "../../styled/variables";
 
 export const TitleMedium = styled.h1`
   font-size: 2.5rem;
@@ -16,4 +16,10 @@ export const TitleMedium = styled.h1`
     width: 100%;
     margin-bottom: 2rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  } 
 `; 

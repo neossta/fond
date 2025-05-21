@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Container, TextMediumCapital, TextSmall, Title } from '../../styled/components';
+import { Container, TextMediumCapital, TextSmall } from '../../styled/components';
 import styled from '@emotion/styled';
-import { $lightColor, $phoneWidth, $primaryBg, $primaryColor } from '../../styled/variables';
+import { $lightColor, $phoneWidth, $primaryColor, $tableWidth } from '../../styled/variables';
 import { TitleMedium } from '../../components/text/TitleMedium';
 
 const config = [
@@ -77,6 +77,9 @@ const ValuesContainer = styled.div`
     width: 100%;
     padding: 2rem 1rem 5rem 1rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     padding: 3rem 4rem;
+  }
 `;
 const QuestionContainer = styled.div`
   width: 27%;
@@ -87,43 +90,48 @@ const QuestionContainer = styled.div`
   background-color: ${$lightColor};
   border-radius: 20px;
   padding: 2rem 3rem;
-   @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$phoneWidth}) {
     width: calc(100% - 2rem);
     top: 90%;
     left: 50%;
     transform: translateX(-50%);
   }
+   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     padding: 2rem 1.7rem;
+     width: 25%;
+  }
 `;
 
 const List = styled.ul`
-  display: grid;
+  display: flex;
   margin: 0 auto;
   padding: 4.5rem 0 0 0;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  align-content: baseline;
   gap: 1rem;
+  align-items: stretch;
   @media screen and (max-width: ${$phoneWidth}) {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 1.5rem;
     padding-top: 1.5rem;
   }
 `;
 
 const Item = styled.li`
-    aspect-ratio: 1/1;
-    background-color: #FFFFFF1A;
-    display: flex;
-    flex-shrink: 1;
-    flex-direction: column;
-    border: 1px solid #FFFFFF4D;
-    border-radius: 20px;
-    padding: 1.5rem;
+  flex: 1 1 250px; 
+  min-width: 150px; 
+  aspect-ratio: 1/1;
+  background-color: #FFFFFF1A;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #FFFFFF4D;
+  border-radius: 20px;
+  padding: 1.5rem;
     > p {
      color: ${$lightColor};
      margin: 0;
     }
     @media screen and (max-width: ${$phoneWidth}) {
       aspect-ratio: auto;
+      flex: 1 1 100%; 
     }
 `;
 

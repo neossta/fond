@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /*.pdf$
+Sitemap: https://fondrumyantseva.ru/sitemap.xml

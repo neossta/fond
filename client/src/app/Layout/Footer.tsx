@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Container, TextSmall } from '../../styled/components';
 import { IconLogo, IconTg, IconVk, IconYt } from '../../icons';
 import {
@@ -11,13 +11,26 @@ import {
   YOUTUBE_LINK,
 } from '../../utils/consts';
 import { Link } from 'react-router-dom';
-import { $lightColor, $mainFontColor, $phoneWidth, $primaryBg, $primaryColor } from '../../styled/variables';
+import { $lightColor, $mainFontColor, $phoneWidth, $primaryBg, $primaryColor, $tableWidth } from '../../styled/variables';
 import { SchoolPainting } from '../../assets/img';
 import { TitleMedium } from '../../components/text/TitleMedium';
 
 
 export const Footer: FC = () => {
   const [email, setEmail] = useState('');
+
+  useEffect(() => {
+  if (typeof window !== 'undefined' && !navigator.userAgent.includes('ReactSnap')) {
+    const script = document.createElement('script');
+    script.src = 'https://apig.unisender.com/your-script.js';
+    script.async = true;
+    document.body.appendChild(script);
+    
+    script.onload = () => {
+      window.popupForSubscriptionsForm('https://apig.unisender.com');
+    };
+  }
+}, []);
 
 
   //   useEffect(() => {
@@ -79,12 +92,11 @@ export const Footer: FC = () => {
               type="email"
               value={email}
               name="email"
-              _label="E-mail"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail"
               required
             />
-            <SubmitButton type="submit" disabled={!!email}>
+            <SubmitButton type="submit" disabled={!email}>
               Подписаться
             </SubmitButton>
             <input type="hidden" name="charset" value="UTF-8" />
@@ -95,11 +107,6 @@ export const Footer: FC = () => {
             <input type="hidden" name="overwrite" value="2" />
             <input type="hidden" name="is_v5" value="1" />
           </Form>
-
-          {/* <Form
-            id="unisender-subscribe-form"
-            data-url="https://cp.unisender.com/ru/v5/subscribe-form/view/617f3bbxg7w5fzcb87kuayuhdyg9dhm97aetooue"
-            data-settings="6krudtpdykk3d3httffmxbu91777drwkheprkfh8t85hh3mbrwr4o"></Form> */}
         </AmoForm>
       </AmoFormContainer>
       <MyContainer>
@@ -116,21 +123,21 @@ export const Footer: FC = () => {
               <Link className="main-link" to={ABOUT_ROUTE}>
                 О нас
               </Link>
-              <a href={`${MAIN_ROUTE}#results`}>Финалисты</a>
-              <a href={`${ABOUT_ROUTE}#values`}>Ценности</a>
-              <a href={`${ABOUT_ROUTE}#team`}>Команда</a>
-              <a href={`${ABOUT_ROUTE}#support`}>Партнеры</a>
+              <Link to={`${MAIN_ROUTE}#results`}>Финалисты</Link>
+              <Link to={`${ABOUT_ROUTE}`}>Ценности</Link>
+              <Link to={`${ABOUT_ROUTE}#team`}>Команда</Link>
+              <Link to={`${ABOUT_ROUTE}#support`}>Партнеры</Link>
             </Col>
             <Col className="second-col" style={{ height: '100%', justifyContent: 'space-between' }}>
               <Col>
-                <a href={`${ABOUT_ROUTE}#docs`}>Реквизиты и документы</a>
-                <a href={`${ABOUT_ROUTE}#contacts`}>Контакты</a>
+                <Link to={`${ABOUT_ROUTE}#docs`}>Реквизиты и документы</Link>
+                <Link to={`${ABOUT_ROUTE}#contacts`}>Контакты</Link>
               </Col>
               <Socials>
                 <a href={`https://t.me/${TELEGRAM_LINK}`} target="_blank" style={{ width: '2.4rem', height: '2.4rem' }}>
                   <IconTg />
                 </a>
-                <a href={VK_LINK} target="_blank" style={{ width: '3rem', height: '2.6rem', alignSelf: 'end', }}>
+                <a href={VK_LINK} target="_blank" style={{ width: '3rem', height: '2.6rem', alignSelf: 'end', }} id='vk-logo'>
                   <IconVk />
                 </a>
                 <a href={YOUTUBE_LINK} target="_blank" style={{ width: '2.4rem', height: '2.4rem' }}>
@@ -144,8 +151,8 @@ export const Footer: FC = () => {
           <IconLogo height={'4rem'} />
           <Copy>© БЛАГОТВОРИТЕЛЬНЫЙ ФОНД ИМ. Н.П. РУМЯНЦЕВА {new Date().getFullYear()}</Copy>
           <MadeBy>
-            <TextSmall>Дизайн сайта —  Наталья Нагорнова</TextSmall>
-            <TextSmall>Верстка сайта — компания «VALUE FIRST.»</TextSmall>
+            <TextSmall>Дизайн сайта — <a href='http://t.me/ohprettywhite' target="_blank">Наталья Нагорнова</a></TextSmall>
+            <TextSmall>Верстка сайта — <a href={'https://valuefirst.ru/'} target="_blank">IT-компания «VALUE FIRST.»</a></TextSmall>
           </MadeBy>
 
         </Right>
@@ -165,7 +172,7 @@ const Wrapper = styled.footer`
         opacity: 0.75;
     }
   }
-    @media screen and (max-width: ${$phoneWidth}) {
+    @media screen and (max-width: ${$tableWidth}) {
       padding-top: 2rem;
    }
 `;
@@ -210,29 +217,41 @@ const Input = styled.input`
   &:not(:placeholder-shown) {
     border-color: #25612B;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+   height: 22px;
+   padding: 0.2rem 2rem;
+   border-radius: 5px;
+   font-size: 1rem;
+  }
 `;
 
 const SubmitButton = styled.button`
   background-color: #25612B;
-                    color: white;
-                    padding: 0.2rem 2rem;
-                    border: none;
-                    border-radius: 10px;
-                    cursor: pointer;
-                    font-size: 16px;
-                    font-family: Meta Pro;
-                    font-weight: 500;
-                    height: 32px;
-                    transition: background-color 0.3s;
+  color: white;
+  padding: 0.2rem 2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Meta Pro;
+  font-weight: 500;
+  height: 32px;
+  transition: background-color 0.3s;
 
-                    &:hover {
-                      background-color: #1a4b22;
+  &:hover {
+    background-color: #1a4b22;
   }
 
-                    &:disabled {
-                    cursor: not-allowed;
+  &:disabled {
+    cursor: not-allowed;
   }
-                    `;
+ @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+   height: 22px;
+   padding: 0.2rem 2rem;
+   border-radius: 5px;
+   font-size: 1rem;
+  }
+`;
 
 
 const Title = styled(TitleMedium)`
@@ -241,15 +260,20 @@ const Title = styled(TitleMedium)`
       line-height: 2.2rem;
       font-weight: 700;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 1.7rem;
+    line-height: 1.8rem;
+  }
 `;
 
 const Img = styled.img`
-                    height: 100%;
-                    width: 50%;
-                    flex: 1;
-                    border-radius: 20px;
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      width: auto;
+  height: 100%;
+  width: 50%;
+  flex: 1;
+  border-radius: 20px;
+  @media screen and (max-width: ${$phoneWidth}) {
+    width: 100%;
+    height: auto;
   }
 `;
 
@@ -277,20 +301,31 @@ const Left = styled.div`
   > *:not(:last-child) {
       margin-right: 4rem;
   }
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      flex-direction: column;
+  @media screen and (max-width: ${$phoneWidth}) {
+    flex-direction: column;
     > *:not(:last-child) {
-                      margin-right: 0;
+        margin-right: 0;
     }
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+  > *:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+    
 `;
 
 const Right = styled.div`
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 0.5rem;
-                    `;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    > svg {
+     width: 6rem
+  }
+    }
+`;
 
 const Socials = styled.div`
   display: flex;
@@ -314,33 +349,46 @@ const Socials = styled.div`
     width: 100%;
     padding-bottom: 2rem;
   }
+   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+      a:not(:nth-child(2)) svg{
+      width: 1.5rem;
+    }
+      a:nth-child(2) svg{
+      width: 2rem;
+    }
+}
+
 `;
 
 const Links = styled.div`
-                    display: flex;
-                    flex-direction: column;
-                    font-size: 1.3rem;
-                    font-weight: 500;
-                    line-height: 1.3rem;
-                    gap: 0.5rem;
-                    text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.3rem;
+  gap: 0.5rem;
+  text-transform: uppercase;
   > *:not(:last-child) {
-                      margin-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
   }
-                    a {
+  a {
     &.main-link {
-                      display: none;
+      display: none;
     }
   }
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      align-items: center;
-                    margin-bottom: 3rem;
-  }
-                    a {
-    &.main - link {
-                      display: block;
-    }
-  }
+  @media screen and (max-width: ${$phoneWidth}) {
+    align-items: center;
+    margin-bottom: 3rem;
+    a {
+      &.main-link {
+        display: block;
+      }
+  }                 
+   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     font-size: 1rem;
+     line-height: 1.2rem;
+   }
+ 
                     `;
 
 const AboutLinks = styled.div`
@@ -363,25 +411,38 @@ const AboutLinks = styled.div`
     }
   }
   }
-f`;
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    > *:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+`;
 
 const Col = styled.div`
-                    display: flex;
-                    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   > *:not(:last-child) {
-                      margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
   }
-                    a {
-                      font-size: 1.1rem;
-                    font-weight: 400;
-                    line-height: 1.3rem;
-                    &.main-link {
+  a {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.3rem;
+    @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     font-size: 0.7rem;
+     line-height: 0.9rem;
+   }
+    &.main-link {
                       font-size: 1.3rem;
-                    font-weight: 500;
-                    line-height: 1.3rem;
-                    letter-spacing: 0%;
-                    text-align: left;
-                    text-transform: uppercase;
+                      font-weight: 500;
+                      line-height: 1.3rem;
+                      letter-spacing: 0%;
+                      text-align: left;
+                      text-transform: uppercase;
+                      @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+                        font-size: 1rem;
+                        line-height: 1.2rem;
+   }
     }
   }
                     @media screen and (max-width: ${$phoneWidth}) {
@@ -402,14 +463,19 @@ const Col = styled.div`
 `;
 
 const Copy = styled.div`
-                    font-size: 1.1rem;
-                    font-weight: 400;
+  font-size: 1.1rem;
+  font-weight: 400;
                     line-height: 1.3rem;
                     margin-top: auto;
                     align-self: center;
                     @media screen and (max-width: ${$phoneWidth}) {
                       margin-top: 2rem;
                     text-align: center;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin-top: 0.5rem;
   }
                     `;
 
@@ -418,7 +484,7 @@ const AmoForm = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Распределяет пространство между текстом и формой */
+  justify-content: space-between;
   min-height: 100%;
                     justify-content: space-between;
                     #static-form-container {
@@ -460,10 +526,10 @@ const Descr = styled.p`
   > *:not(:last-child) {
                       margin-bottom: 1rem;
   }
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      font-size: 1rem;
+                    @media screen and (max-width: ${$tableWidth}) {
+                      font-size: 0.7rem;
                     margin-bottom: 2rem;
-                    line-height: 1.25rem;
+                    line-height: 0.9rem;
     > *:not(:last-child) {
                       margin-bottom: 0.5rem;
     }
@@ -471,9 +537,9 @@ const Descr = styled.p`
                     `;
 
 const Text = styled.div`
-                    display: flex;
-                    flex-direction: column;
-                    `;
+  display: flex;
+  flex-direction: column;
+`;
 
 const MadeBy = styled.div`
                     width: 100%;
@@ -484,5 +550,4 @@ const MadeBy = styled.div`
                     @media screen and (max-width: ${$phoneWidth}) {
                       text-align: center;
    }
-
-                    `;
+`;

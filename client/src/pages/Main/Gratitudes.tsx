@@ -104,7 +104,7 @@ export default function GratitudesBlock() {
                                 <img src={ParnerLogo9} />
                             </a>
                             <Text>
-                                Компания «VALUE FIRST.»
+                                IT-компания «VALUE FIRST.»
                             </Text>
                         </Logo>
                     </SecondRow>

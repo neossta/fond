@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { Container } from "../../styled/components"
 import Winners from "./Winners";
-import { $phoneWidth, $primaryColor } from "../../styled/variables";
+import { $phoneWidth, $primaryColor, $tableWidth } from "../../styled/variables";
 import { useState } from "react";
 import Statisctics from "./Statistics";
 import ByRegions from "./ByRegions";
@@ -42,6 +42,9 @@ const Wrapper = styled(Container)`
      max-height: none;
      padding: 2rem 1.5rem;
    }
+    @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+      padding: 2.5rem
+  }
 `;
 
 const Header = styled.div`

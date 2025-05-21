@@ -3,33 +3,33 @@ import { Container, Row } from "../../styled/components";
 import styled from "@emotion/styled";
 import { ArrowDown, ArrowUp, MainIcon } from "../../icons";
 import { TitleMedium } from "../../components/text/TitleMedium";
-import { $lightColor, $phoneWidth } from "../../styled/variables";
+import { $desktopWidth, $lightColor, $phoneWidth, $tableWidth, } from "../../styled/variables";
 import { Form } from "../Support/Form";
 
 export default function SupportBlock() {
-    const [open, setOpen] = useState(false);
-    return (
-        <Wrapper style={{ background: open ? 'linear-gradient(to right, #28382A, #398D38)' : '#398D38' }}>
-            <Header onClick={() => setOpen(!open)}>
-                <Title>поддержать русских историков</Title>
-                {open ? <ArrowUp /> : <ArrowDown />}
-            </Header>
-            {open
-                ? <FormWrapper>
-                    <Form />
-                </FormWrapper>
-                : <IconWrapper onClick={() => setOpen(!open)}>
-                    <MainIcon width={'100%'} height={'100%'} />
-                </IconWrapper>}
+  const [open, setOpen] = useState(false);
+  return (
+    <Wrapper style={{ background: open ? 'linear-gradient(to right, #28382A, #398D38)' : '#398D38' }}>
+      <Header onClick={() => setOpen(!open)}>
+        <Title>поддержать русских историков</Title>
+        {open ? <ArrowUp height={'3rem'}/> : <ArrowDown height={'3rem'}/>}
+      </Header>
+      {open
+        ? <FormWrapper>
+          <Form />
+        </FormWrapper>
+        : <IconWrapper onClick={() => setOpen(!open)}>
+          <MainIcon width={'100%'} height={'100%'} />
+        </IconWrapper>}
 
-        </Wrapper>
-    )
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled(Container)`
   border-radius: 20px;
   padding: 0 7rem;
-  min-height: 40vh;
+  min-height: 34vh;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -37,6 +37,19 @@ const Wrapper = styled(Container)`
   @media screen and (max-width: ${$phoneWidth}) {
     min-height: 12vh;
     padding: 0;
+  }
+  @media screen and (min-width: ${$desktopWidth}) {
+     min-height: 25vh;
+     padding: 0;
+  }
+  
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     min-height: 14vh;
+     padding: 0;
+  }
+  @media screen and (min-width: ${$tableWidth}) and (max-width: 1200px) {
+     min-height: 16vh;
+     padding: 0;
   }
 
   &:hover {
@@ -102,6 +115,11 @@ const Header = styled(Row)`
     > svg {
      height: 1.1rem;
     }
+    @media screen and (max-width: 992px) {
+    > svg {
+     height: 0.8rem;
+    }
+    }
   }
 `;
 
@@ -111,6 +129,9 @@ const FormWrapper = styled.div`
   @media screen and (max-width: ${$phoneWidth}) {
     margin: 1rem auto 2rem auto;
     width: 90%;
+  }
+  @media screen and (min-width: ${$desktopWidth}) {
+    width: 50%;
   
   }
 `;

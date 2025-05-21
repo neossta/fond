@@ -63,7 +63,7 @@ export const IconMinus: FC = () => (
   </svg>
 );
 
-export const IconClose = (props:{size?: number}) => (
+export const IconClose = (props: { size?: number }) => (
   <svg viewBox="0 0 24 24" width={props.size} fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M19.6451 4.36708C19.1718 3.89382 18.4073 3.89382 17.934 4.36708L12 10.289L6.06598 4.35495C5.59272 3.88168 4.82821 3.88168 4.35495 4.35495C3.88168 4.82821 3.88168 5.59272 4.35495 6.06598L10.289 12L4.35495 17.934C3.88168 18.4073 3.88168 19.1718 4.35495 19.6451C4.82821 20.1183 5.59272 20.1183 6.06598 19.6451L12 13.711L17.934 19.6451C18.4073 20.1183 19.1718 20.1183 19.6451 19.6451C20.1183 19.1718 20.1183 18.4073 19.6451 17.934L13.711 12L19.6451 6.06598C20.1062 5.60485 20.1062 4.82821 19.6451 4.36708Z"
@@ -79,14 +79,14 @@ export const MainIcon = (props: { width?: number | string, height?: number | str
   </svg>
 )
 
-export const ArrowDown: FC = () => (
-  <svg width="42" height="32" viewBox="0 0 42 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const ArrowDown = (props: { width?: number | string, height?: number | string, }) => (
+  <svg width={props.width || "42"} height={props.height || "32"} viewBox="0 0 42 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2 8L16 22L30 8" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 
 );
-export const ArrowUp: FC = () => (
-  <svg width="40" height="34" viewBox="0 0 40 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const ArrowUp = (props: { width?: number | string, height?: number | string, }) => (
+  <svg width={props.width || "40"} height={props.height || "34"} viewBox="0 0 40 34" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M30.5 26L16.5 12L2.5 26" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 )

@@ -11,7 +11,7 @@ import { Popsovet } from './Popsovet';
 const About: FC = () => {
   return (
     <>
-      <HelmetHead title="О нас" descr="Учитель истории 2024" />
+      <HelmetHead title="О нас" descr="Фонд Румянцева" />
       <Values pd />
       <Team />
       <Advice />

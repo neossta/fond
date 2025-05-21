@@ -1,4 +1,4 @@
-import { Expert3, Expert9, Finalist1, Finalist10, Finalist11, Finalist12, Finalist13, Finalist14, Finalist15, Finalist16, Finalist17, Finalist18, Finalist19, Finalist2, Finalist20, Finalist21, Finalist22, Finalist23, Finalist24, Finalist25, Finalist26, Finalist27, Finalist28, Finalist29, Finalist3, Finalist30, Finalist31, Finalist32, Finalist33, Finalist34, Finalist36, Finalist37, Finalist38, Finalist39, Finalist4, Finalist40, Finalist41, Finalist42, Finalist43, Finalist44, Finalist45, Finalist46, Finalist47, Finalist48, Finalist49, Finalist5, Finalist50, Finalist51, Finalist52, Finalist53, Finalist54, Finalist55, Finalist56, Finalist57, Finalist58, Finalist59, Finalist6, Finalist60, Finalist61, Finalist7, Finalist8, Finalist9, Team2, Winner1, Winner10, Winner11, Winner12, Winner13, Winner2, Winner3, Winner4, Winner5, Winner6, Winner7, Winner8, Winner9 } from "../assets/img";
+import { Expert1, Expert6, Expert7, Expert8, Expert9, Finalist1, Finalist10, Finalist11, Finalist12, Finalist13, Finalist14, Finalist15, Finalist16, Finalist17, Finalist18, Finalist19, Finalist2, Finalist20, Finalist21, Finalist22, Finalist23, Finalist24, Finalist25, Finalist26, Finalist27, Finalist28, Finalist29, Finalist3, Finalist30, Finalist31, Finalist32, Finalist33, Finalist34, Finalist36, Finalist37, Finalist38, Finalist39, Finalist4, Finalist40, Finalist41, Finalist42, Finalist43, Finalist44, Finalist45, Finalist46, Finalist47, Finalist48, Finalist49, Finalist5, Finalist50, Finalist51, Finalist52, Finalist53, Finalist54, Finalist55, Finalist56, Finalist57, Finalist58, Finalist59, Finalist6, Finalist60, Finalist61, Finalist62, Finalist7, Finalist8, Finalist9, Team2, Winner1, Winner10, Winner11, Winner12, Winner13, Winner2, Winner3, Winner4, Winner5, Winner6, Winner7, Winner8, Winner9 } from "../assets/img";
 
 interface Region {
     title: string;
@@ -505,7 +505,7 @@ export const regionsData: Record<string, Region> = {
                     image: Finalist34,
                 },
                 {
-                    name: 'Маркин Виктор Лелнидович',
+                    name: 'Маркин Виктор Леонидович',
                     organisation: 'ОАНО Наукославль',
                     city: 'Москва',
                     image: Finalist55,
@@ -550,6 +550,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Камчатнов Григорий Александрович',
                     organisation: 'НО АНО Павловская гимназия',
                     city: 'Веледниково',
+                    image: Finalist62,
                 },
                 {
                     name: 'Реутов Павел Павлович',
@@ -587,7 +588,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Грибков Иван Владимирович',
                     organisation: 'член жюри',
                     city: 'Москва',
-                    image: Expert3,
+                    image: Expert1,
                 },
                 {
                     name: 'Коломиец Артем Валентинович',
@@ -599,7 +600,7 @@ export const regionsData: Record<string, Region> = {
                     name: 'Косиченко Иван Никитович',
                     organisation: 'член жюри',
                     city: 'Москва',
-                    image: Expert9,
+                    image: Expert6,
                 },
                 {
                     name: 'Новиков Петр Алексеевич',

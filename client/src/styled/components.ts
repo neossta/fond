@@ -1,7 +1,7 @@
 //global styled
 
 import styled from '@emotion/styled';
-import { $phoneWidth, $primaryColor } from './variables';
+import { $desktopWidth, $phoneWidth, $primaryColor, $tableWidth } from './variables';
 
 export const Container = styled.div`
   width: 82vw;
@@ -11,6 +11,10 @@ export const Container = styled.div`
   @media screen and (max-width: ${$phoneWidth}) {
     width: 90vw;
   }
+  @media screen and (min-width: ${$desktopWidth}){
+    width: 70vw;
+  }
+
 `;
 
 export const Title = styled.h2`
@@ -21,7 +25,7 @@ export const Title = styled.h2`
   letter-spacing: 0%;
   text-align: center;
   text-transform: uppercase;
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     font-size: 3rem;
     line-height: 100%;
   }
@@ -39,6 +43,10 @@ export const TextMediumCapital = styled.p`
     font-size: 1.1rem;
     line-height: 1.3rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    }
 `;
 
 export const TextMedium = styled.p`
@@ -46,7 +54,7 @@ export const TextMedium = styled.p`
   font-size: 1.3rem;
   line-height: 1.3rem;
   letter-spacing: 0%;
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     font-size: 1.2rem;
     line-height: 1.3rem;
   }
@@ -61,6 +69,10 @@ export const TextSmall = styled.p`
   @media screen and (max-width: ${$phoneWidth}) {
     font-size: 1rem;
     line-height: 1.3rem;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.7rem;
+    line-height: 0.8rem;
   }
 `;
 

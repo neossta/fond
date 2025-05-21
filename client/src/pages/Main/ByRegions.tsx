@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useRef, useState } from "react";
-import { $lightColor, $phoneWidth, $primaryColor } from "../../styled/variables";
+import { $lightColor, $phoneWidth, $primaryColor, $tableWidth } from "../../styled/variables";
 import { regionsData } from "../../utils/regions";
 import { Button } from "../../components/form";
 import { TextSmall } from "../../styled/components";
@@ -11,7 +11,7 @@ const regionsWithFinalists = Object.entries(regionsData)
         code,
         title: region.title,
         shortTItle: region.shortTitle,
-        finalists: region.data!.finalists,
+        finalists: region.data?.finalists,
         jury: region.data?.jury,
     }));
 
@@ -42,7 +42,7 @@ export default function ByRegions() {
                     }</Text>
                     <GridRow>
                         {regionsWithFinalists.find(r => r.code === region)?.finalists?.map(f => (
-                            <GridItem>
+                            <GridItem key={f.name}>
                                 {f.image
                                     ? <img src={f.image} />
                                     : <NoImageBlock></NoImageBlock>
@@ -56,7 +56,7 @@ export default function ByRegions() {
                             </GridItem>
                         ))}
                         {regionsWithFinalists.find(r => r.code === region)?.jury?.map(f => (
-                            <GridItem>
+                            <GridItem key={f.name}>
                                 {f.image
                                     ? <img src={f.image} loading="lazy" alt="Финалист"/>
                                     : <NoImageBlock></NoImageBlock>
@@ -98,7 +98,7 @@ const ParticipantsBlock = styled.div`
   border-radius: 20px;
   padding: 1.5rem;
   @media screen and (max-width: ${$phoneWidth}) {
-  padding: 0.5rem
+    padding: 0.5rem
   }
 `;
 
@@ -136,7 +136,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const GridRow = styled.div`
- display: grid;
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
   gap: 1.5rem;
   width: 100%;
@@ -146,6 +146,9 @@ const GridRow = styled.div`
    gap: 0.5rem;
    padding-top: 2rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+    }
 `;
 
 

@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Container, TextSmall } from '../../styled/components';
 import styled from '@emotion/styled';
-import { Expert1, Expert2, Expert3, Expert4, Expert5, Expert6, Expert8, Expert9, Popsovet1, Popsovet2, Popsovet3, Popsovet4 } from '../../assets/img';
-import { $phoneWidth } from '../../styled/variables';
+import { Popsovet1, Popsovet2, Popsovet3, Popsovet4 } from '../../assets/img';
+import { $phoneWidth, $tableWidth } from '../../styled/variables';
 import { TitleMedium } from '../../components/text/TitleMedium';
 
 const config = [
@@ -80,7 +80,7 @@ const Item = styled.li`
   > *:not(:last-child) {
     margin-bottom: 1.5rem;
   }
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     > *:not(:last-child) {
     margin-bottom: 1rem;
   }
@@ -101,6 +101,11 @@ const Name = styled.div`
   line-height: 1.3rem;
   margin-top: 1.5rem;
   @media screen and (max-width: ${$phoneWidth}) {
+    margin-top: 0.5rem;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.9rem;
+    line-height: 1rem;
     margin-top: 0.5rem;
   }
 `;

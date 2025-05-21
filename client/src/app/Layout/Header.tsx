@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useState } from 'react';
 import { Container } from '../../styled/components';
 import { Link, NavLink } from 'react-router-dom';
 import { IconClose, IconLogo } from '../../icons';
 import { ABOUT_ROUTE, MAIN_ROUTE, SUPPORT_ROUTE } from '../../utils/consts';
 import { Button } from '../../components/form';
-import { $lightColor, $mainBackgroundColor, $mainFontColor, $phoneWidth, $primaryColor } from '../../styled/variables';
+import { $desktopWidth, $lightColor, $mainBackgroundColor, $mainFontColor, $phoneWidth, $primaryColor, $tableWidth } from '../../styled/variables';
 import { handleToggleAmoForm } from '../../components/fn';
 
 export const Header: FC = () => {
@@ -64,6 +64,10 @@ const MyContainer = styled(Container)`
     justify-content: space-between;
      margin: 0 5vw;
   }
+  @media screen and (min-width: ${$desktopWidth}) {
+    justify-content: space-between;
+    margin: 0 15vw;
+  }
 `;
 
 const Logo = styled(Link)`
@@ -80,7 +84,11 @@ const Logo = styled(Link)`
   }
   @media screen and (max-width: ${$phoneWidth}) {
     width: 7rem;
-    margin-right: 0;
+    // margin-right: 0;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    width: 8rem;
+    // margin-right: 0;
   }
 `;
 

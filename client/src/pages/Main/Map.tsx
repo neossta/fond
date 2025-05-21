@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { FC, useState } from "react"
 import { Container } from "../../styled/components";
-import { $phoneWidth, $primaryColor } from "../../styled/variables";
+import { $phoneWidth, $primaryColor, $tableWidth } from "../../styled/variables";
 import { RussiaMap } from "../../icons/RussiaMap";
 import { regionsData } from "../../utils/regions";
 
@@ -103,6 +103,9 @@ const Tooltip = styled.div`
   width: 35rem;
   @media screen and (max-width: ${$phoneWidth}) {
     top: 7rem;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     top: 10rem;
   }
 `;
 

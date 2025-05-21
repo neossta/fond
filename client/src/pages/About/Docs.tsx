@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
 import { Container } from '../../styled/components';
-import { DocImageSvg } from '../../assets/img';
-import { $lightColor, $phoneWidth } from '../../styled/variables';
+import { $lightColor, $phoneWidth, $tableWidth } from '../../styled/variables';
 import { CertificatePDF, CharterPDF, PositionPDF, RequisitesPDF } from '../../assets/pdf';
 import { TitleMedium } from '../../components/text/TitleMedium';
 import { PinIcon } from '../../icons';
@@ -76,4 +75,9 @@ const Text = styled.div`
   line-height: 1.3rem;
   align-self: start;
   text-align: left;
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+      font-size: 0.9rem;
+      line-height: 1rem;
+      margin-top: 0.5rem;
+    }
 `;

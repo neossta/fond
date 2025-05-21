@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { FC, useEffect, useState } from 'react';
-import { $lightColor, $paleGreen, $phoneWidth, $primaryBg, $primaryColor } from '../../styled/variables';
+import { $desktopWidth, $lightColor, $paleGreen, $phoneWidth, $primaryBg, $primaryColor, $tableWidth } from '../../styled/variables';
 import { Controller, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -258,7 +258,7 @@ const Content = styled.div`
   @media screen and (max-width: ${$phoneWidth}) {
     padding: 1.5rem 1.5rem 9rem;
     position: relative;
-  }
+}
 `;
 
 const Label = styled.div`
@@ -297,13 +297,20 @@ const Label = styled.div`
       line-height: 1rem;
     }
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    b {
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+    }
+    }
 `;
 
 const Field = styled.div`
   display: grid;
-  grid-template-columns: auto 33.4rem;
+  grid-template-columns: 1fr minmax(auto, 3fr);
   align-content: baseline;
   padding-bottom: 2rem;
+  gap: 1rem;
   justify-content: space-between;
   &:not(:last-child) {
     margin-bottom: 2rem;
@@ -351,6 +358,12 @@ const Checkbox = styled.div`
       line-height: 1.5rem;
       padding: 1rem;
     }
+    @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+      padding: 0.8rem;
+      border-radius: 0.6rem;
+    }
   }
 `;
 
@@ -373,18 +386,27 @@ const Wrap2 = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   > *:not(input) {
-    width: 10.25rem;
+    width: min(10.25rem, 100%);
+    flex: 1 1 calc(25% - 1rem); 
   }
   > input {
-    width: 21.56rem;
+    width: min(21.56rem, 100%);
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    > *:not(input) {
+      flex: 1 1 calc(50% - 0.5rem);
+    }
   }
   @media screen and (max-width: ${$phoneWidth}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
     > *:not(input) {
-      width: calc(50% - 0.4rem);
+      width: 100%;
     }
     > input {
       width: 100%;
+      grid-column: span 2
     }
   }
 `;
@@ -413,6 +435,12 @@ const Input = styled.input`
     letter-spacing: 0%;
     padding: 1rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.4rem;
+    border-radius: 0.6rem;
+    }
 `;
 
 const Text = styled.div`
@@ -501,6 +529,9 @@ const Check = styled.div`
 const ControllerText = styled.span`
   font-size: 1.1rem;
   color: ${$primaryColor};
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.9rem
+  }
 `;
 
 const Btn = styled.button<{ $active: boolean }>`
@@ -519,10 +550,15 @@ const Btn = styled.button<{ $active: boolean }>`
   line-height: 3.25rem;
   letter-spacing: 0%;
   text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 2.31rem;
   @media screen and (max-width: ${$phoneWidth}) {
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.5rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2rem;
+    }
 `;

@@ -39,7 +39,7 @@ export const GlobalStyles: FC = () => (
           font-size: ${calcFluidFontSize(6.47, 16, SCREEN_MD, SCREEN_LG)};
         }
         @media screen and (max-width: ${$tableWidth}) {
-          font-size: ${calcFluidFontSize(11.9465, 31.51, 280, SCREEN_SM)};
+          font-size: ${calcFluidFontSize(6, 14, SCREEN_SM, SCREEN_MD)};
         }
         @media screen and (max-width: ${$phoneWidth}) {
           font-size: ${calcFluidFontSize(11.9465, 20.48, 280, SCREEN_SM)};
@@ -58,6 +58,9 @@ export const GlobalStyles: FC = () => (
 
       #root {
         min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
       }
       a {
         color: inherit;

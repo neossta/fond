@@ -1,10 +1,7 @@
-import styled from "@emotion/styled"
-import { TitleMedium } from "../../components/text/TitleMedium";
-import { Button } from "../../components/form";
-import { $lightColor, $phoneWidth } from "../../styled/variables";
+import styled from "@emotion/styled";
+import { $lightColor } from "../../styled/variables";
 import CarouselComponent from "../../components/carousel";
 import { Winner1, Winner10, Winner11, Winner12, Winner13, Winner2, Winner3, Winner4, Winner5, Winner6, Winner7, Winner8, Winner9 } from "../../assets/img";
-import { useState } from "react";
 
 const winners = [
     {
@@ -82,7 +79,7 @@ export default function Winners() {
         <Container>
             <CarouselComponent>
                 {winners.map(w => (
-                    <Person>
+                    <Person key={w.name}>
                         <Photo src={w.img} />
                         <TextMedium>{w.name}</TextMedium>
                         <TextSmall>{w.nomination}</TextSmall>

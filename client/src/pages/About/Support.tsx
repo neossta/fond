@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
-import { Container, TextMediumCapital, TextSmall, Title } from '../../styled/components';
+import { Container, TextMediumCapital, TextSmall } from '../../styled/components';
 import { ParnerLogo1, ParnerLogo2, ParnerLogo3, ParnerLogo4, ParnerLogo5, ParnerLogo6, ParnerLogo7, ParnerLogo8, ParnerLogo9, Support1, Support2, Support3, Support4, Support5, Support6, Support7 } from '../../assets/img';
-import { $phoneWidth, } from '../../styled/variables';
+import { $phoneWidth, $tableWidth, } from '../../styled/variables';
 import { TitleMedium } from '../../components/text/TitleMedium';
 
 const partners = [
@@ -52,7 +52,7 @@ const friends = [
   {
     avatar: ParnerLogo9,
     src: 'https://valuefirst.ru/',
-    name: 'Компания «VALUE FIRST.»'
+    name: 'IT-компания «VALUE FIRST.»'
   },
 ]
 
@@ -120,7 +120,7 @@ export const Support: FC = () => {
                 <a href={src} target='_blank'>
                   <Avatar src={avatar} />
                 </a>
-                <TextSmall>{name}</TextSmall>
+                <TextSmall style={{ wordBreak: 'keep-all' }}>{name}</TextSmall>
               </Item>
             ))}
           </List>
@@ -168,6 +168,10 @@ const GridRow = styled(Container)`
         grid-template-columns: 1fr 1fr 1fr;
     }}
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    gap: 8rem;
+    grid-template-columns: 2.5fr 1.3fr 3fr;    
+  }
 `;
 
 const Partners = styled.div`
@@ -186,6 +190,9 @@ const List = styled.ul<{ $columns?: number }>`
     grid-template-columns: 1fr 1fr;
     padding-top: 1.3rem;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    gap: 2rem 1rem;
+  }
 `;
 
 const Item = styled.li`
@@ -196,7 +203,7 @@ const Item = styled.li`
   > *:not(:last-child) {
     margin-bottom: 1.5rem;
   }
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     > *:not(:last-child) {
     margin-bottom: 1rem;
   }
@@ -206,7 +213,7 @@ const Item = styled.li`
 const Avatar = styled.img`
   width: 100%;
   aspect-ratio: 1/1;
-  border-radius: 20px;
+  border-radius: 25%;
   object-fit: cover;
   object-position: center top;
   align-self: center;
@@ -218,5 +225,10 @@ const Name = styled.div`
   line-height: 1.3rem;
   @media screen and (max-width: ${$phoneWidth}) {
     margin-top: 0.5rem;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.1rem;
   }
 `;

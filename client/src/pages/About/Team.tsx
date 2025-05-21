@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Column, Container, TextSmall, Title } from '../../styled/components';
 import styled from '@emotion/styled';
 import { Team1, Team2, Team3, Team4, TeamBorder } from '../../assets/img';
-import { $phoneWidth, $primaryBg, $primaryColor } from '../../styled/variables';
+import { $desktopWidth, $phoneWidth, $primaryBg, $primaryColor, $tableWidth } from '../../styled/variables';
 import { TitleMedium } from '../../components/text/TitleMedium';
 
 const config = [
@@ -44,7 +44,7 @@ export const Team: FC = () => {
             </AvatarWrapper>
 
             <Right>
-            <Border src={TeamBorder} />
+              <Border src={TeamBorder} />
               <ContentWrapper>
                 <Name>{item.name}</Name>
                 <Descr>{item.descr}</Descr>
@@ -80,16 +80,18 @@ const List = styled.ul`
     padding-right: 0;
     padding-top: 0;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    gap: 0.8rem;
+  }
 `;
 
 const Item = styled.li`
   padding-bottom: 3rem;
   background: ${$primaryBg};
-  min-height: 100%;
+  height: 100%;
   min-width: 0; 
   display: flex;
   gap: 1rem;
-  align-items: flex-start;
   @media screen and (max-width: ${$phoneWidth}) {
     gap: 0.5rem;
   }
@@ -100,6 +102,7 @@ const Right = styled(Column)`
   align-items: start;
   height: fit-content;
   min-height: 100%; 
+  max-height: 100%;
 `;
 
 const ContentWrapper = styled.div`
@@ -115,21 +118,29 @@ const AvatarWrapper = styled.div`
   min-width: 0;
   border-radius: 20px;
   position: relative;
+  display: flex;
+  align-items: stretch;
   
   @media screen and (max-width: ${$phoneWidth}) {
     margin-right: 0;
     flex: 1.2;
   }
+  @media screen and (min-width: ${$desktopWidth}) {
+     flex: 1;
+  }
 `;
 
 const Avatar = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   border-radius: 20px;
   @media screen and (max-width: ${$phoneWidth}) {
     width: 100%;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     height: 100%;
   }
 `;
 
@@ -138,9 +149,13 @@ const Name = styled.h3`
   font-weight: 500;
   line-height: 1.3rem;
   margin-bottom: 1.3rem;
-  @media screen and (max-width: ${$phoneWidth}) {
+  z-index: 1;
+  @media screen and (max-width: ${$tableWidth}) {
     margin-bottom: 0.6rem;
     font-size: 1.2rem;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.9rem;
   }
 `;
 
@@ -149,6 +164,9 @@ margin-bottom: 0.7rem;
 @media screen and (max-width: ${$phoneWidth}) {
   margin-bottom: 0.5rem;
 }
+@media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 0.7rem;
+  }
 `;
 
 
@@ -159,5 +177,11 @@ const Border = styled.img`
   height: 60%;
   @media screen and (max-width: ${$phoneWidth}) {
     height: 40%;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     height: calc(100% - 9rem); 
+  }
+  @media screen and (min-width: ${$desktopWidth}) {
+    height: calc(100% - 12rem);
   }
 `;

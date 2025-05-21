@@ -9,7 +9,7 @@ import { ScrollTop } from '../../components/route';
 export const Layout: FC = () => {
   return (
     <>
-      <HelmetHead title="Учитель истории 2024" descr="Учитель истории 2024" />
+      <HelmetHead title="Фонд Румянцева" descr="Фонд Румянцева" />
       <Header />
       <ScrollTop />
       <Main>
@@ -23,4 +23,5 @@ export const Layout: FC = () => {
 const Main = styled.main`
   display: block;
   width: 100%;
+  flex: 1;
 `;

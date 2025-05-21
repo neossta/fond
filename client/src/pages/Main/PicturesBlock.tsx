@@ -3,7 +3,7 @@ import CarouselComponent from "../../components/carousel";
 import { AwardPic1, AwardPic10, AwardPic11, AwardPic12, AwardPic13, AwardPic14, AwardPic2, AwardPic3, AwardPic4, AwardPic5, AwardPic6, AwardPic7, AwardPic8, AwardPic9 } from "../../assets/img";
 import { Container } from "../../styled/components";
 import { TitleMedium } from "../../components/text/TitleMedium";
-import { $phoneWidth } from "../../styled/variables";
+import { $desktopWidth, $phoneWidth } from "../../styled/variables";
 
 export default function PicturesBlock() {
     return (
@@ -51,6 +51,9 @@ const Row = styled.div`
    object-fit: cover;
    border-radius: 1.3rem;
    flex: 1;
+   @media screen and (min-width: ${$desktopWidth}) {
+      height: 320px;
+  }
    }
 `;
 

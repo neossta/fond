@@ -1,15 +1,12 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useState } from 'react';
 import styled from '@emotion/styled';
 import { Container } from '../../styled/components';
-import { $lightColor, $phoneWidth } from '../../styled/variables';
+import { $desktopWidth, $lightColor, $phoneWidth, $tableWidth } from '../../styled/variables';
 import { TitleMedium } from '../../components/text/TitleMedium';
 import { Poster } from '../../assets/img';
 
 export const History: FC = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [userInteracted, setUserInteracted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handlePlay = () => setIsPlaying(true);
 
@@ -27,12 +24,16 @@ export const History: FC = () => {
         <VideoContainer>
           {!isPlaying
             ? <img src={Poster} />
-            : <iframe
-              src="https://vk.com/video_ext.php?oid=-226149272&id=456239061&hd=1&autoplay=1"
-              allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-              allowFullScreen
-            >
-            </iframe>}
+            :
+            <>
+              {/* {!isIframeLoaded && <img src={Poster} className="video-poster" />} */}
+              <iframe
+                src="https://vk.com/video_ext.php?oid=-226149272&id=456239061&hd=1&autoplay=1"
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+                allowFullScreen
+              >
+              </iframe>
+            </>}
 
           {!isPlaying && (
             <button
@@ -86,6 +87,9 @@ const Content = styled.div`
     height: auto;
     max-height: none;
   }
+   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+     padding: 4rem;
+   }
 `;
 
 const DescrContainer = styled.div`
@@ -103,6 +107,9 @@ const VideoContainer = styled.div`
   align-self: stretch;
   aspect-ratio: 16/9;
   overflow: hidden;
+  background: black;
+  border-radius: 20px;
+  border: none;
   &:hover {
     cursor: pointer
   }
@@ -126,7 +133,12 @@ const VideoContainer = styled.div`
     margin-right: 0;
     margin-bottom: 1rem;
   }
-  border-radius: 20px;
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    align-self: center;
+  } 
+  @media screen and (min-width: ${$desktopWidth}) {
+    border-radius: 3rem;
+  }
 `;
 
 
@@ -136,7 +148,7 @@ const Descr = styled.p`
   line-height: 1.6rem;
   margin-bottom: 4rem;
   text-align: left;
-  @media screen and (max-width: ${$phoneWidth}) {
+  @media screen and (max-width: ${$tableWidth}) {
     font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.3rem;
