@@ -13,9 +13,16 @@
   },
   "reactSnap": {
     "source": "build",
-    "puppeteerArgs": ["--no-sandbox"],
+    "puppeteerArgs": [
+      "--no-sandbox"
+    ],
     "skipThirdPartyRequests": true,
-    "exclude": ["/404", "/agreement"]
+    "exclude": [
+      "/404",
+      "/agreement"
+    ],
+    "inlineCss": true,
+    "preloadFonts": true
   },
   "dependencies": {
     "@bunt/is": "^0.29.19",
@@ -33,6 +40,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.52.1",
+    "react-input-mask": "^2.0.4",
     "react-pdf": "^9.1.1",
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
@@ -44,6 +52,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-helmet": "^6.1.6",
+    "@types/react-input-mask": "^3.0.6",
     "@types/react-transition-group": "^4.4.10",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",

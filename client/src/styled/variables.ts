@@ -1,7 +1,8 @@
-import { SCREEN_LG, SCREEN_MD, SCREEN_SM } from '../utils/consts';
+import { SCREEN_EXTRA_LG, SCREEN_LG, SCREEN_MD, SCREEN_SM } from '../utils/consts';
 
 //variables
 export const $desktopWidth = `${SCREEN_LG}px`;
+export const $desctopLatgeWidth = `${SCREEN_EXTRA_LG}`;
 export const $tableWidth = `${SCREEN_MD}px`;
 export const $phoneWidth = `${SCREEN_SM}px`;
 

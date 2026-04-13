@@ -12,12 +12,12 @@ export default function PicturesBlock() {
             <CarouselComponent theme="dark">
                 <div>
                     <Row>
-                        <img src={AwardPic1} />
-                        <img src={AwardPic2} />
-                        <img src={AwardPic3} />
-                        <img src={AwardPic4} />
-                        <img src={AwardPic5} />
-                        <img src={AwardPic6} />
+                        <img src={AwardPic1} alt="Фото премии Учитель истории" />
+                        <img src={AwardPic2} alt="Фото премии Учитель истории" />
+                        <img src={AwardPic3} alt="Фото премии Учитель истории" />
+                        <img src={AwardPic4} alt="Фото премии Учитель истории" />
+                        <img src={AwardPic5} alt="Фото премии Учитель истории" />
+                        <img src={AwardPic6} alt="Фото премии Учитель истории" />
                         <img src={AwardPic7} style={{ width: 50 }} />
                     </Row>
                     <Row>
@@ -47,7 +47,7 @@ const Row = styled.div`
   padding-bottom: 1.5rem;
 
   > img {
-   height: 220px;
+   height: 210px;
    object-fit: cover;
    border-radius: 1.3rem;
    flex: 1;

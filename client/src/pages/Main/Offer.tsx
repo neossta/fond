@@ -1,16 +1,41 @@
-import { FC } from 'react';
+import { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { Container } from '../../styled/components';
 import { $desktopWidth, $phoneWidth, $primaryColor, $tableWidth } from '../../styled/variables';
-import { MainVideoMp4, MainVideoWebm } from '../../assets/video';
+import { MainVideoMp4, MainVideoSmallMp4, MainVideoSmallWebm, MainVideoWebm } from '../../assets/video';
+import { Button } from '../../components/form';
+import { handleToggleAmoForm } from '../../components/fn';
 
-export const Offer: FC = () => {
+export const Offer = (props: { withButton: boolean }) => {
+  useEffect(() => {
+    const video = document.querySelector('video');
+    if (!video) return;
+    video.muted = true;
+    video.playsInline = true; // Для iOS
+
+    const playVideo = () => {
+      video.play()
+        .then(() => console.log(""))
+        .catch((e) => {
+          video.load();
+          setTimeout(() => video.play(), 300);
+        });
+    };
+    playVideo();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') playVideo();
+    });
+  }, []);
   return (
     <Wrapper>
       <Banner>
-        <video autoPlay loop muted playsInline>
-          <source src={MainVideoWebm} type="video/webm" />
-          <source src={MainVideoMp4} type="video/mp4" />
+        <video autoPlay loop muted playsInline webkit-playsinline preload="metadata">
+          <source src={MainVideoWebm} type="video/webm" media="(min-width: 768px)" />
+          <source src={MainVideoMp4} type="video/mp4" media="(min-width: 768px)" />
+          <source src={MainVideoSmallWebm} type="video/webm" media="(max-width: 767px)" />
+          <source src={MainVideoSmallMp4} type="video/mp4" media="(max-width: 767px)" />
+
           Ваш браузер не поддерживает видео.
         </video>
       </Banner>
@@ -25,6 +50,7 @@ export const Offer: FC = () => {
             только деятельное сообщество российских <br />
             учителей. Ради его поддержки мы создали премию «Учитель истории».
           </Descr>
+          {props.withButton ? <Button $size='big' $theme='lightGreen' onClick={handleToggleAmoForm}>Принять участие</Button> : null}
         </InnerContainer>
 
       </Content>
@@ -126,10 +152,10 @@ const Descr = styled.p`
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.5rem;
-  // margin-bottom: 4rem;
+  margin-bottom: 4rem;
   text-align: left;
   @media screen and (max-width: ${$tableWidth}) {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.3rem;

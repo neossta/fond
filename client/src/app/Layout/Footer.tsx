@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { FC, useEffect, useState } from 'react';
-import { Container, TextSmall } from '../../styled/components';
-import { IconLogo, IconTg, IconVk, IconYt } from '../../icons';
+import styled from "@emotion/styled";
+import { FC, useContext, useEffect } from "react";
+import { Container, TextSmall } from "../../styled/components";
+import { IconLogo, IconTg, IconVk, IconYt } from "../../icons";
 import {
   ABOUT_ROUTE,
   MAIN_ROUTE,
@@ -9,29 +9,36 @@ import {
   TELEGRAM_LINK,
   VK_LINK,
   YOUTUBE_LINK,
-} from '../../utils/consts';
-import { Link } from 'react-router-dom';
-import { $lightColor, $mainFontColor, $phoneWidth, $primaryBg, $primaryColor, $tableWidth } from '../../styled/variables';
-import { SchoolPainting } from '../../assets/img';
-import { TitleMedium } from '../../components/text/TitleMedium';
-
+} from "../../utils/consts";
+import { Link } from "react-router-dom";
+import {
+  $lightColor,
+  $mainFontColor,
+  $phoneWidth,
+  $primaryBg,
+  $primaryColor,
+  $tableWidth,
+} from "../../styled/variables";
+import { TitleMedium } from "../../components/text/TitleMedium";
+import { YearContext } from "../../context/YearContext";
+import { handleToggleAmoForm } from "../../components/fn";
 
 export const Footer: FC = () => {
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
+  const { setYear } = useContext(YearContext);
 
-  useEffect(() => {
-  if (typeof window !== 'undefined' && !navigator.userAgent.includes('ReactSnap')) {
-    const script = document.createElement('script');
-    script.src = 'https://apig.unisender.com/your-script.js';
-    script.async = true;
-    document.body.appendChild(script);
-    
-    script.onload = () => {
-      window.popupForSubscriptionsForm('https://apig.unisender.com');
-    };
-  }
-}, []);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && !navigator.userAgent.includes('ReactSnap')) {
+  //     const script = document.createElement('script');
+  //     script.src = 'https://apig.unisender.com/your-script.js';
+  //     script.async = true;
+  //     document.body.appendChild(script);
 
+  //     script.onload = () => {
+  //       window.popupForSubscriptionsForm('https://apig.unisender.com');
+  //     };
+  //   }
+  // }, []);
 
   //   useEffect(() => {
   //     // Define global functions and objects expected by amoforms.js
@@ -71,7 +78,7 @@ export const Footer: FC = () => {
 
   return (
     <Wrapper>
-      <AmoFormContainer>
+      {/* <AmoFormContainer>
         <Img src={SchoolPainting} />
         <AmoForm id="amoForm">
           <Text>
@@ -108,12 +115,24 @@ export const Footer: FC = () => {
             <input type="hidden" name="is_v5" value="1" />
           </Form>
         </AmoForm>
-      </AmoFormContainer>
+      </AmoFormContainer> */}
       <MyContainer>
         <Left>
           <Links>
             <Link to={MAIN_ROUTE}>Премия</Link>
             <Link to={SUPPORT_ROUTE}>Поддержать</Link>
+            <Link
+              to={`${MAIN_ROUTE}#participate`}
+              onClick={(e) => {
+                setYear(2025);
+                setTimeout(() => {
+                  handleToggleAmoForm();
+                }, 100);
+              }}
+              style={{ color: $primaryColor }}
+            >
+              Принять участие
+            </Link>
             <Link className="main-link" to={ABOUT_ROUTE}>
               О нас
             </Link>
@@ -128,19 +147,35 @@ export const Footer: FC = () => {
               <Link to={`${ABOUT_ROUTE}#team`}>Команда</Link>
               <Link to={`${ABOUT_ROUTE}#support`}>Партнеры</Link>
             </Col>
-            <Col className="second-col" style={{ height: '100%', justifyContent: 'space-between' }}>
+            <Col
+              className="second-col"
+              style={{ height: "100%", justifyContent: "space-between" }}
+            >
               <Col>
                 <Link to={`${ABOUT_ROUTE}#docs`}>Реквизиты и документы</Link>
                 <Link to={`${ABOUT_ROUTE}#contacts`}>Контакты</Link>
               </Col>
               <Socials>
-                <a href={`https://t.me/${TELEGRAM_LINK}`} target="_blank" style={{ width: '2.4rem', height: '2.4rem' }}>
+                <a
+                  href={`https://t.me/${TELEGRAM_LINK}`}
+                  target="_blank"
+                  style={{ width: "2.4rem", height: "2.4rem" }}
+                >
                   <IconTg />
                 </a>
-                <a href={VK_LINK} target="_blank" style={{ width: '3rem', height: '2.6rem', alignSelf: 'end', }} id='vk-logo'>
+                <a
+                  href={VK_LINK}
+                  target="_blank"
+                  style={{ width: "3rem", height: "2.6rem", alignSelf: "end" }}
+                  id="vk-logo"
+                >
                   <IconVk />
                 </a>
-                <a href={YOUTUBE_LINK} target="_blank" style={{ width: '2.4rem', height: '2.4rem' }}>
+                <a
+                  href={YOUTUBE_LINK}
+                  target="_blank"
+                  style={{ width: "2.4rem", height: "2.4rem" }}
+                >
                   <IconYt />
                 </a>
               </Socials>
@@ -148,13 +183,25 @@ export const Footer: FC = () => {
           </AboutLinks>
         </Left>
         <Right>
-          <IconLogo height={'4rem'} />
-          <Copy>© БЛАГОТВОРИТЕЛЬНЫЙ ФОНД ИМ. Н.П. РУМЯНЦЕВА {new Date().getFullYear()}</Copy>
+          <IconLogo height={"4rem"} />
+          <Copy>
+            © БЛАГОТВОРИТЕЛЬНЫЙ ФОНД ИМ. Н.П. РУМЯНЦЕВА{" "}
+            {new Date().getFullYear()}
+          </Copy>
           <MadeBy>
-            <TextSmall>Дизайн сайта — <a href='http://t.me/ohprettywhite' target="_blank">Наталья Нагорнова</a></TextSmall>
-            <TextSmall>Верстка сайта — <a href={'https://valuefirst.ru/'} target="_blank">IT-компания «VALUE FIRST.»</a></TextSmall>
+            <TextSmall>
+              Дизайн сайта —{" "}
+              <a href="http://t.me/ohprettywhite" target="_blank">
+                Наталья Нагорнова
+              </a>
+            </TextSmall>
+            <TextSmall>
+              Верстка сайта —{" "}
+              <a href={"https://valuefirst.ru/"} target="_blank">
+                IT-компания «VALUE FIRST.»
+              </a>
+            </TextSmall>
           </MadeBy>
-
         </Right>
       </MyContainer>
     </Wrapper>
@@ -162,122 +209,119 @@ export const Footer: FC = () => {
 };
 
 const Wrapper = styled.footer`
-    overflow: hidden;
-    margin: 0;
-    padding: 4rem 0 1rem 0;
-    background-color: ${$primaryBg};
-    a {
-       transition: opacity 0.3s;
-        &:hover {
-        opacity: 0.75;
+  overflow: hidden;
+  margin: 0;
+  padding: 4rem 0 1rem 0;
+  background-color: ${$primaryBg};
+  a {
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 0.75;
     }
   }
-    @media screen and (max-width: ${$tableWidth}) {
-      padding-top: 2rem;
-   }
-`;
-
-const AmoFormContainer = styled(Container)`
-  background-color: ${$lightColor};
-  border-radius: 20px;
-  display: flex;
-  padding: 20px;
-  gap: 20px;
-  align-items: stretch;
-  @media screen and (max-width: ${$phoneWidth}) {
-    flex-direction: column;
-    margin-top: 4rem;
+  @media screen and (max-width: ${$tableWidth}) {
+    padding-top: 2rem;
   }
 `;
 
-const Form = styled.form`
-      display: flex;
-      gap: 15px;
-      width: 100%;
-      @media screen and (max-width: ${$phoneWidth}) {
-      flex-direction: column;
-      }
-`;
+// const AmoFormContainer = styled(Container)`
+//   background-color: ${$lightColor};
+//   border-radius: 20px;
+//   display: flex;
+//   padding: 20px;
+//   gap: 20px;
+//   align-items: stretch;
+//   @media screen and (max-width: ${$phoneWidth}) {
+//     flex-direction: column;
+//     margin-top: 4rem;
+//   }
+// `;
 
-const Input = styled.input`
-    padding: 0.5rem 1.6rem;
-    border: 2px solid #25612B;
-    border-radius: 10px;
-    width: 100%;
-    text-align: center;
-    height: 32px;
-   &::placeholder {
-    color: black;
-    opacity: 1; 
-  }
-  &:focus {
-    border-color: #25612B;
-  }
+// // const Form = styled.form`
+// //       display: flex;
+// //       gap: 15px;
+// //       width: 100%;
+// //       @media screen and (max-width: ${$phoneWidth}) {
+// //       flex-direction: column;
+// //       }
+// // `;
 
-  &:not(:placeholder-shown) {
-    border-color: #25612B;
-  }
-  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-   height: 22px;
-   padding: 0.2rem 2rem;
-   border-radius: 5px;
-   font-size: 1rem;
-  }
-`;
+// // const Input = styled.input`
+// //     padding: 0.5rem 1.6rem;
+// //     border: 2px solid #25612B;
+// //     border-radius: 10px;
+// //     width: 100%;
+// //     text-align: center;
+// //     height: 32px;
+// //    &::placeholder {
+// //     color: black;
+// //     opacity: 1;
+// //   }
+// //   &:focus {
+// //     border-color: #25612B;
+// //   }
 
-const SubmitButton = styled.button`
-  background-color: #25612B;
-  color: white;
-  padding: 0.2rem 2rem;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: Meta Pro;
-  font-weight: 500;
-  height: 32px;
-  transition: background-color 0.3s;
+// //   &:not(:placeholder-shown) {
+// //     border-color: #25612B;
+// //   }
+// //   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+// //    height: 22px;
+// //    padding: 0.2rem 2rem;
+// //    border-radius: 5px;
+// //    font-size: 1rem;
+// //   }
+// // `;
 
-  &:hover {
-    background-color: #1a4b22;
-  }
+// const SubmitButton = styled.button`
+//   background-color: #25612B;
+//   color: white;
+//   padding: 0.2rem 2rem;
+//   border: none;
+//   border-radius: 10px;
+//   cursor: pointer;
+//   font-size: 16px;
+//   font-family: Meta Pro;
+//   font-weight: 500;
+//   height: 32px;
+//   transition: background-color 0.3s;
 
-  &:disabled {
-    cursor: not-allowed;
-  }
- @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-   height: 22px;
-   padding: 0.2rem 2rem;
-   border-radius: 5px;
-   font-size: 1rem;
-  }
-`;
+//   &:hover {
+//     background-color: #1a4b22;
+//   }
 
+//   &:disabled {
+//     cursor: not-allowed;
+//   }
+//  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+//    height: 22px;
+//    padding: 0.2rem 2rem;
+//    border-radius: 5px;
+//    font-size: 1rem;
+//   }
+// `;
 
-const Title = styled(TitleMedium)`
-    @media screen and (max-width: ${$phoneWidth}) {
-      font-size: 2rem;
-      line-height: 2.2rem;
-      font-weight: 700;
-  }
-  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 1.7rem;
-    line-height: 1.8rem;
-  }
-`;
+// const Title = styled(TitleMedium)`
+//     @media screen and (max-width: ${$phoneWidth}) {
+//       font-size: 2rem;
+//       line-height: 2.2rem;
+//       font-weight: 700;
+//   }
+//   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+//     font-size: 1.7rem;
+//     line-height: 1.8rem;
+//   }
+// `;
 
-const Img = styled.img`
-  height: 100%;
-  width: 50%;
-  flex: 1;
-  border-radius: 20px;
-  @media screen and (max-width: ${$phoneWidth}) {
-    width: 100%;
-    height: auto;
-  }
-`;
-
-
+// const Img = styled.img`
+//   height: 100%;
+//   width: 50%;
+//   flex: 1;
+//   border-radius: 20px;
+//   @media screen and (max-width: ${$phoneWidth}) {
+//     width: 100%;
+//     height: auto;
+//   }
+// `;
 
 const MyContainer = styled(Container)`
   position: relative;
@@ -286,33 +330,32 @@ const MyContainer = styled(Container)`
   margin-top: 3rem;
   padding-bottom: 2rem;
   > *:not(:last-child) {
-      position: relative;
-      z-index: 1;
+    position: relative;
+    z-index: 1;
   }
-      @media screen and (max-width: ${$phoneWidth}) {
-          flex-direction: column;
-          margin-top: 2rem;
-          padding-bottom: 1rem;
+  @media screen and (max-width: ${$phoneWidth}) {
+    flex-direction: column;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
   }
-                    `;
+`;
 
 const Left = styled.div`
   display: flex;
   > *:not(:last-child) {
-      margin-right: 4rem;
+    margin-right: 4rem;
   }
   @media screen and (max-width: ${$phoneWidth}) {
     flex-direction: column;
     > *:not(:last-child) {
-        margin-right: 0;
+      margin-right: 0;
     }
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-  > *:not(:last-child) {
+    > *:not(:last-child) {
       margin-right: 2rem;
     }
   }
-    
 `;
 
 const Right = styled.div`
@@ -322,9 +365,9 @@ const Right = styled.div`
   gap: 0.5rem;
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
     > svg {
-     width: 6rem
-  }
+      width: 6rem;
     }
+  }
 `;
 
 const Socials = styled.div`
@@ -342,22 +385,21 @@ const Socials = styled.div`
     justify-content: center;
     margin-top: 1rem;
     > *:not(:last-child) {
-      margin-right: 2rem;  
+      margin-right: 2rem;
     }
     align-items: center;
     gap: 1rem;
     width: 100%;
     padding-bottom: 2rem;
   }
-   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-      a:not(:nth-child(2)) svg{
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    a:not(:nth-child(2)) svg {
       width: 1.5rem;
     }
-      a:nth-child(2) svg{
+    a:nth-child(2) svg {
       width: 2rem;
     }
-}
-
+  }
 `;
 
 const Links = styled.div`
@@ -392,24 +434,24 @@ const Links = styled.div`
                     `;
 
 const AboutLinks = styled.div`
-                    display: flex;
-                    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
   > *:not(:last-child) {
-                      margin-right: 4rem;
+    margin-right: 4rem;
   }
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      flex-direction: column;
-                    align-items: flex-start;
+  @media screen and (max-width: ${$phoneWidth}) {
+    flex-direction: column;
+    align-items: flex-start;
     > *:not(:last-child) {
-                      margin-right: 0;
-                    margin-bottom: 0.5rem;
+      margin-right: 0;
+      margin-bottom: 0.5rem;
     }
-                    div {
+    div {
       &.second-col {
-                      flex-direction: column;
-                    padding-top: 1rem;
+        flex-direction: column;
+        padding-top: 1rem;
+      }
     }
-  }
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
     > *:not(:last-child) {
@@ -429,34 +471,34 @@ const Col = styled.div`
     font-weight: 400;
     line-height: 1.3rem;
     @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-     font-size: 0.7rem;
-     line-height: 0.9rem;
-   }
+      font-size: 0.7rem;
+      line-height: 0.9rem;
+    }
     &.main-link {
-                      font-size: 1.3rem;
-                      font-weight: 500;
-                      line-height: 1.3rem;
-                      letter-spacing: 0%;
-                      text-align: left;
-                      text-transform: uppercase;
-                      @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-                        font-size: 1rem;
-                        line-height: 1.2rem;
-   }
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.3rem;
+      letter-spacing: 0%;
+      text-align: left;
+      text-transform: uppercase;
+      @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+        font-size: 1rem;
+        line-height: 1.2rem;
+      }
     }
   }
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      width: 100%;
-                    flex-direction: row;
-                    align-items: flex-end;
-                    justify-content: center;
+  @media screen and (max-width: ${$phoneWidth}) {
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
     > *:not(:last-child) {
-                      margin-right: 0.5rem;
-                    margin-bottom: 0;
+      margin-right: 0.5rem;
+      margin-bottom: 0;
     }
-                    a {
+    a {
       &.main-link {
-                      display: none;
+        display: none;
       }
     }
   }
@@ -465,89 +507,88 @@ const Col = styled.div`
 const Copy = styled.div`
   font-size: 1.1rem;
   font-weight: 400;
-                    line-height: 1.3rem;
-                    margin-top: auto;
-                    align-self: center;
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      margin-top: 2rem;
-                    text-align: center;
+  line-height: 1.3rem;
+  margin-top: auto;
+  align-self: center;
+  @media screen and (max-width: ${$phoneWidth}) {
+    margin-top: 2rem;
+    text-align: center;
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
     font-size: 0.9rem;
     line-height: 1rem;
     margin-top: 0.5rem;
   }
-                    `;
-
-const AmoForm = styled.div`
-  flex: 1;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100%;
-                    justify-content: space-between;
-                    #static-form-container {
-                      background-color: ${$lightColor};
-                    z-index: 1;
-                    width: 100%;
-                    display: flex;
-                    justify-content: flex-end;
-    > * {
-                      width: 100%;
-    }
-                    button[type="submit"] {
-                      background-color: ${$primaryColor};
-                    color: white;
-                    border: none;
-                    padding: 1rem 2rem;
-                    border-radius: 8px;
-                    font-size: 1rem;
-                    cursor: pointer;
-                    transition: background-color 0.3s;
-                    width: 100%;
-
-                    &:hover {
-                      background-color: darken(${$primaryColor}, 10%);
-      }
-    }
-  }
-
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      flex-direction: column;
-  }
-                    `;
-
-
-const Descr = styled.p`
-                    font-size: 1.1rem;
-                    font-weight: 400;
-                    line-height: 1.3rem;
-  > *:not(:last-child) {
-                      margin-bottom: 1rem;
-  }
-                    @media screen and (max-width: ${$tableWidth}) {
-                      font-size: 0.7rem;
-                    margin-bottom: 2rem;
-                    line-height: 0.9rem;
-    > *:not(:last-child) {
-                      margin-bottom: 0.5rem;
-    }
-  }
-                    `;
-
-const Text = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 
+// const AmoForm = styled.div`
+//   flex: 1;
+//   padding: 0;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   min-height: 100%;
+//                     justify-content: space-between;
+//                     #static-form-container {
+//                       background-color: ${$lightColor};
+//                     z-index: 1;
+//                     width: 100%;
+//                     display: flex;
+//                     justify-content: flex-end;
+//     > * {
+//                       width: 100%;
+//     }
+//                     button[type="submit"] {
+//                       background-color: ${$primaryColor};
+//                     color: white;
+//                     border: none;
+//                     padding: 1rem 2rem;
+//                     border-radius: 8px;
+//                     font-size: 1rem;
+//                     cursor: pointer;
+//                     transition: background-color 0.3s;
+//                     width: 100%;
+
+//                     &:hover {
+//                       background-color: darken(${$primaryColor}, 10%);
+//       }
+//     }
+//   }
+
+//                     @media screen and (max-width: ${$phoneWidth}) {
+//                       flex-direction: column;
+//   }
+//                     `;
+
+// const Descr = styled.p`
+//                     font-size: 1.1rem;
+//                     font-weight: 400;
+//                     line-height: 1.3rem;
+//   > *:not(:last-child) {
+//                       margin-bottom: 1rem;
+//   }
+//                     @media screen and (max-width: ${$tableWidth}) {
+//                       font-size: 0.7rem;
+//                     margin-bottom: 2rem;
+//                     line-height: 0.9rem;
+//     > *:not(:last-child) {
+//                       margin-bottom: 0.5rem;
+//     }
+//   }
+//                     `;
+
+// const Text = styled.div`
+//   display: flex;
+//   flex-direction: column;
+// `;
+
 const MadeBy = styled.div`
-                    width: 100%;
-                    text-align: left;
+  width: 100%;
+  text-align: left;
   > *:not(:last-child) {
-                      margin-bottom: 0.5rem;
-    }
-                    @media screen and (max-width: ${$phoneWidth}) {
-                      text-align: center;
-   }
+    margin-bottom: 0.5rem;
+  }
+  @media screen and (max-width: ${$phoneWidth}) {
+    text-align: center;
+  }
 `;

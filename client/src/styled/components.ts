@@ -11,6 +11,9 @@ export const Container = styled.div`
   @media screen and (max-width: ${$phoneWidth}) {
     width: 90vw;
   }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    width: 87vw;
+  }
   @media screen and (min-width: ${$desktopWidth}){
     width: 70vw;
   }
@@ -44,8 +47,8 @@ export const TextMediumCapital = styled.p`
     line-height: 1.3rem;
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 1rem;
-    line-height: 1.2rem;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
     }
 `;
 
@@ -62,17 +65,17 @@ export const TextMedium = styled.p`
 
 export const TextSmall = styled.p`   
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   letter-spacing: 0%;
   font-weight: 400;
-  line-height: 1.3rem;
+  line-height: 1.4rem;
   @media screen and (max-width: ${$phoneWidth}) {
     font-size: 1rem;
     line-height: 1.3rem;
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 0.7rem;
-    line-height: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1rem;
   }
 `;
 

@@ -66,7 +66,7 @@ export default function CarouselComponent({ children, theme }: CarouselProps) {
             container.removeEventListener('mouseup', handleMouseUp);
             container.removeEventListener('mouseleave', handleMouseLeave);
         };
-    }, [isDragging, startX, scrollLeftStart]);
+    }, [isDragging, startX, scrollLeftStart, handleMouseMove]);
 
     return (
         <div>

@@ -7,7 +7,7 @@ export const TitleMedium = styled.h1`
   line-height: 2.8rem;
   text-align: left;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   color: ${$primaryColor};
   @media screen and (max-width: ${$phoneWidth}) {
     font-size: 1.3rem;

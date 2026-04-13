@@ -1,10 +1,16 @@
-import styled from '@emotion/styled';
-import { FC } from 'react';
-import { Container } from '../../styled/components';
-import { $lightColor, $phoneWidth, $tableWidth } from '../../styled/variables';
-import { CertificatePDF, CharterPDF, PositionPDF, RequisitesPDF } from '../../assets/pdf';
-import { TitleMedium } from '../../components/text/TitleMedium';
-import { PinIcon } from '../../icons';
+import styled from "@emotion/styled";
+import { FC } from "react";
+import { Container } from "../../styled/components";
+import { $lightColor, $phoneWidth, $tableWidth } from "../../styled/variables";
+import {
+  CertificatePDF,
+  CharterPDF,
+  // PositionPDF,
+  PublicReport2024PDF,
+  RequisitesPDF,
+} from "../../assets/pdf";
+import { TitleMedium } from "../../components/text/TitleMedium";
+import { PinIcon } from "../../icons";
 
 export const Docs: FC = () => {
   return (
@@ -13,23 +19,23 @@ export const Docs: FC = () => {
       <DocsWrap>
         <Doc target="_blank" href={CertificatePDF}>
           <PinIcon />
-          <Text>
-            Свидетельство о регистрации
-          </Text>
+          <Text>Свидетельство о регистрации</Text>
         </Doc>
         <Doc target="_blank" href={RequisitesPDF}>
           <PinIcon />
-          <Text>
-            Реквизиты фонда
-          </Text>
+          <Text>Реквизиты фонда</Text>
         </Doc>
         <Doc target="_blank" href={CharterPDF}>
           <PinIcon />
           <Text>Устав</Text>
         </Doc>
-        <Doc target="_blank" href={PositionPDF}>
+        {/* <Doc target="_blank" href={PositionPDF}>
           <PinIcon />
-          <Text>Положение о конкурсе</Text>
+          <Text>Положение о конкурсе<br></br> "Учитель истории"</Text>
+        </Doc> */}
+        <Doc target="_blank" href={PublicReport2024PDF}>
+          <PinIcon />
+          <Text>Отчет за 2024 год</Text>
         </Doc>
       </DocsWrap>
     </Wrapper>
@@ -76,8 +82,8 @@ const Text = styled.div`
   align-self: start;
   text-align: left;
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-      font-size: 0.9rem;
-      line-height: 1rem;
-      margin-top: 0.5rem;
-    }
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-top: 0.5rem;
+  }
 `;

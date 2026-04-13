@@ -1,44 +1,57 @@
-import styled from '@emotion/styled';
-import { FC, useEffect, useState } from 'react';
-import { $desktopWidth, $lightColor, $paleGreen, $phoneWidth, $primaryBg, $primaryColor, $tableWidth } from '../../styled/variables';
-import { Controller, useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { AGREEMENT_ROUTE, PUBLIC_OFFER_ROUTE } from '../../utils/consts';
+import styled from "@emotion/styled";
+import { FC, useEffect, useState } from "react";
+import {
+  $desktopWidth,
+  $lightColor,
+  $paleGreen,
+  $phoneWidth,
+  $primaryBg,
+  $primaryColor,
+  $tableWidth,
+} from "../../styled/variables";
+import { Controller, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import {
+  AGREEMENT_ROUTE,
+  PUBLIC_OFFER_ROUTE,
+  SPB_LINK,
+} from "../../utils/consts";
+import { Button } from "../../components/form";
 
 const config = {
   periodicity: [
     {
-      value: 'monthly',
-      descr: 'ежемесячно',
+      value: "monthly",
+      descr: "ежемесячно",
     },
     {
-      value: 'one-time',
-      descr: 'разово',
+      value: "one-time",
+      descr: "разово",
     },
   ],
   sum: [
     {
       value: 1000,
-      descr: '1000 ₽',
+      descr: "1000 ₽",
     },
     {
       value: 2000,
-      descr: '2000 ₽',
+      descr: "2000 ₽",
     },
     {
       value: 3000,
-      descr: '3000 ₽',
+      descr: "3000 ₽",
     },
     {
       value: 5000,
-      descr: '5000 ₽',
+      descr: "5000 ₽",
     },
   ],
 };
 
 type TForm = {
-  periodicity: 'monthly' | 'one-time';
+  periodicity: "monthly" | "one-time";
   sum?: number;
   manualSum?: string;
   name: string;
@@ -84,9 +97,9 @@ export const Form: FC = () => {
 
     try {
       const response = await axios.post(
-        'https://teacherprime2024.netlify.app/.netlify/functions/create-payment',
+        "https://teacherprime2024.netlify.app/.netlify/functions/create-payment",
         {
-          recurring: data.periodicity === 'monthly',
+          recurring: data.periodicity === "monthly",
           amount,
           email: data.email,
         },
@@ -94,7 +107,7 @@ export const Form: FC = () => {
       const { confirmation_url } = response.data;
       window.location.href = confirmation_url;
     } catch (error) {
-      console.error('Ошибка при создании платежа:', error);
+      console.error("Ошибка при создании платежа:", error);
     }
   });
 
@@ -112,7 +125,7 @@ export const Form: FC = () => {
                 key={value}
                 name="periodicity"
                 control={control}
-                rules={{ required: 'Выберите формат' }}
+                rules={{ required: "Выберите формат" }}
                 render={({ field: { onChange } }) => (
                   <Checkbox>
                     <input
@@ -142,13 +155,13 @@ export const Form: FC = () => {
                 render={({ field: { onChange } }) => (
                   <Checkbox>
                     <input
-                      checked={value.toString() === watch('sum')?.toString()}
+                      checked={value.toString() === watch("sum")?.toString()}
                       name="sum"
                       value={value}
                       onChange={(e) => {
                         onChange(e.target.value);
                         setError(false);
-                        setValue('manualSum', undefined);
+                        setValue("manualSum", undefined);
                       }}
                       type="radio"
                     />
@@ -162,23 +175,31 @@ export const Form: FC = () => {
               control={control}
               render={({ field: { value, onChange } }) => (
                 <Input
-                  value={value ?? ''}
+                  value={value ?? ""}
                   onChange={(e) => {
                     onChange(e.target.value);
                     setError(false);
-                    setValue('sum', undefined);
+                    setValue("sum", undefined);
                   }}
                   placeholder="Другая сумма  ₽"
                 />
               )}
             />
+            <SBPWrap>
+              <SPBLink to={SPB_LINK} target="_blank">
+                Оплатить по СБП
+              </SPBLink>
+            </SBPWrap>
           </Wrap2>
         </Field>
         <Field>
           <Text>
             <Label>
               <b>ваши данные</b>
-              {(errors.name || errors.email || errors.agree_data || errors.agree_offer) && (
+              {(errors.name ||
+                errors.email ||
+                errors.agree_data ||
+                errors.agree_offer) && (
                 <span>
                   {errors.name?.message ||
                     errors.email?.message ||
@@ -193,11 +214,11 @@ export const Form: FC = () => {
                   <Controller
                     name="agree_offer"
                     control={control}
-                    rules={{ required: 'Примите соглашения' }}
+                    rules={{ required: "Примите соглашения" }}
                     render={({ field: { onChange } }) => (
                       <input
                         type="checkbox"
-                        checked={watch('agree_offer') ?? false}
+                        checked={watch("agree_offer") ?? false}
                         onChange={(e) => onChange(e.target.checked)}
                       />
                     )}
@@ -213,11 +234,11 @@ export const Form: FC = () => {
                   <Controller
                     name="agree_data"
                     control={control}
-                    rules={{ required: 'Примите соглашения' }}
+                    rules={{ required: "Примите соглашения" }}
                     render={({ field: { onChange } }) => (
                       <input
                         type="checkbox"
-                        checked={watch('agree_data') ?? false}
+                        checked={watch("agree_data") ?? false}
                         onChange={(e) => onChange(e.target.checked)}
                       />
                     )}
@@ -225,21 +246,29 @@ export const Form: FC = () => {
                   <i />
                 </Check>
                 <ControllerText>
-                  Соглашаюсь на обработку моих <Link to={AGREEMENT_ROUTE}>персональных данных</Link>
+                  Соглашаюсь на обработку моих{" "}
+                  <Link to={AGREEMENT_ROUTE}>персональных данных</Link>
                 </ControllerText>
               </Row>
             </Col>
           </Text>
           <Wrap3>
-            <Input style={{ height: '6rem' }}
+            <Input
+              style={{ height: "6rem" }}
               placeholder="имя и фамилия"
-              {...register('name', { required: 'Имя обязательно' })}
+              {...register("name", { required: "Имя обязательно" })}
             />
-            <Input style={{ height: '6rem' }} placeholder="E-mail" {...register('email', { required: 'E-mail обязателен' })} />
+            <Input
+              style={{ height: "6rem" }}
+              placeholder="E-mail"
+              {...register("email", { required: "E-mail обязателен" })}
+            />
           </Wrap3>
         </Field>
       </Content>
-      <Btn type="submit" $active={isFormValid}>поддержать</Btn>
+      <Btn type="submit" $active={isFormValid}>
+        поддержать
+      </Btn>
     </Wrapper>
   );
 };
@@ -258,7 +287,7 @@ const Content = styled.div`
   @media screen and (max-width: ${$phoneWidth}) {
     padding: 1.5rem 1.5rem 9rem;
     position: relative;
-}
+  }
 `;
 
 const Label = styled.div`
@@ -302,7 +331,7 @@ const Label = styled.div`
       font-size: 1.2rem;
       line-height: 1.2rem;
     }
-    }
+  }
 `;
 
 const Field = styled.div`
@@ -351,7 +380,9 @@ const Checkbox = styled.div`
     color: ${$paleGreen};
     border-radius: 1rem;
     padding: 0.75rem;
-    transition: background-color 0.3s, color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
     @media screen and (max-width: ${$phoneWidth}) {
       font-size: 1.25rem;
       font-weight: 700;
@@ -385,16 +416,20 @@ const Wrap2 = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  > *:not(input) {
+  > div {
     width: min(10.25rem, 100%);
-    flex: 1 1 calc(25% - 1rem); 
+    flex: 1 1 calc(25% - 1rem);
   }
   > input {
     width: min(21.56rem, 100%);
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    > *:not(input) {
+    > div {
       flex: 1 1 calc(50% - 0.5rem);
+    }
+    > input {
+      width: 100%;
+      grid-column: span 2;
     }
   }
   @media screen and (max-width: ${$phoneWidth}) {
@@ -406,13 +441,13 @@ const Wrap2 = styled.div`
     }
     > input {
       width: 100%;
-      grid-column: span 2
+      grid-column: span 2;
     }
   }
 `;
 
 const Input = styled.input`
-  font-family: 'Meta Pro';
+  font-family: "Meta Pro";
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.4rem;
@@ -440,7 +475,7 @@ const Input = styled.input`
     line-height: 1rem;
     padding: 0.4rem;
     border-radius: 0.6rem;
-    }
+  }
 `;
 
 const Text = styled.div`
@@ -484,9 +519,9 @@ const Row = styled.div`
   a {
     text-decoration: underline;
     transition: color 0.3s;
-    &:hover {
-      color: ${$primaryBg};
-    }
+    // &:hover {
+    //   color: ${$primaryBg};
+    // }
   }
 `;
 
@@ -508,7 +543,9 @@ const Check = styled.div`
     border-radius: 25%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
   }
   input {
     cursor: pointer;
@@ -530,7 +567,7 @@ const ControllerText = styled.span`
   font-size: 1.1rem;
   color: ${$primaryColor};
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 0.9rem
+    font-size: 0.9rem;
   }
 `;
 
@@ -543,8 +580,8 @@ const Btn = styled.button<{ $active: boolean }>`
   display: flex;
   outline: none;
   border: none;
-  background: ${({ $active }) => ($active ? '#398D38' : $paleGreen)};
-  color:  ${$lightColor};
+  background: ${({ $active }) => ($active ? "#398D38" : $paleGreen)};
+  color: ${$lightColor};
   font-size: 2.3rem;
   font-weight: 700;
   line-height: 3.25rem;
@@ -560,5 +597,44 @@ const Btn = styled.button<{ $active: boolean }>`
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 2rem;
-    }
+  }
+`;
+
+const SPBLink = styled(Link)`
+  color: ${$primaryColor};
+  width: 100%;
+  @media screen and (max-width: ${$phoneWidth}) {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0%;
+    padding: 1rem;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.4rem;
+  }
+`;
+
+const SBPWrap = styled.div`
+  display: flex;
+  font-family: "Meta Pro";
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.4rem;
+  letter-spacing: 0%;
+  justify-content: center;
+  align-items: center;
+  // margin-left: 1rem;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  border: 0.19rem solid ${$primaryColor};
+  color: ${$paleGreen};
+  border-radius: 1rem;
+  outline: none;
+  @media screen and (max-width: ${$phoneWidth}) {
+    grid-column: span 2;
+  }
 `;

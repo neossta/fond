@@ -1,15 +1,25 @@
-import styled from '@emotion/styled';
-import { FC, useState } from 'react';
-import { Container } from '../../styled/components';
-import { Link, NavLink } from 'react-router-dom';
-import { IconClose, IconLogo } from '../../icons';
-import { ABOUT_ROUTE, MAIN_ROUTE, SUPPORT_ROUTE } from '../../utils/consts';
-import { Button } from '../../components/form';
-import { $desktopWidth, $lightColor, $mainBackgroundColor, $mainFontColor, $phoneWidth, $primaryColor, $tableWidth } from '../../styled/variables';
-import { handleToggleAmoForm } from '../../components/fn';
+import styled from "@emotion/styled";
+import { FC, useContext, useState } from "react";
+import { Container } from "../../styled/components";
+import { Link, NavLink } from "react-router-dom";
+import { IconClose, IconLogo } from "../../icons";
+import { ABOUT_ROUTE, MAIN_ROUTE, SUPPORT_ROUTE } from "../../utils/consts";
+import { Button } from "../../components/form";
+import {
+  $desktopWidth,
+  $lightColor,
+  $mainBackgroundColor,
+  $mainFontColor,
+  $phoneWidth,
+  $primaryColor,
+  $tableWidth,
+} from "../../styled/variables";
+import { YearContext } from "../../context/YearContext";
+import { handleToggleAmoForm } from "../../components/fn";
 
 export const Header: FC = () => {
   const [showBurgerMenu, setShoeBurgerMenu] = useState(false);
+  const { setYear } = useContext(YearContext);
   return (
     <Wrapper>
       <MyContainer>
@@ -20,25 +30,59 @@ export const Header: FC = () => {
           <NavLink to={ABOUT_ROUTE}>О нас</NavLink>
           <NavLink to={SUPPORT_ROUTE}>Поддержать</NavLink>
         </Nav>
-        <FormBtn onClick={handleToggleAmoForm} $fitContent>
-          Получать обновления
-        </FormBtn>
+        <NavLink
+          onClick={() => {
+            setYear(2025);
+            setTimeout(() => {
+              handleToggleAmoForm();
+            }, 100);
+          }}
+          style={{ marginLeft: "auto" }}
+          to={`${MAIN_ROUTE}#participate`}
+        >
+          <FormBtn $fitContent type="button">
+            Принять участие
+          </FormBtn>
+        </NavLink>
+
         <MenuBtn onClick={() => setShoeBurgerMenu(true)}>Меню</MenuBtn>
-        {showBurgerMenu
-          ? <MobileMenu>
+        {showBurgerMenu ? (
+          <MobileMenu>
             <div
-              style={{ textAlign: 'end', width: '5rem', marginLeft: 'auto' }}
-              onClick={() => setShoeBurgerMenu(false)}>
+              style={{ textAlign: "end", width: "5rem", marginLeft: "auto" }}
+              onClick={() => setShoeBurgerMenu(false)}
+            >
               <IconClose size={25} />
             </div>
-            <NavLink to={ABOUT_ROUTE} onClick={() => setShoeBurgerMenu(false)}>О нас</NavLink>
-            <NavLink to={SUPPORT_ROUTE} onClick={() => setShoeBurgerMenu(false)}>Поддержать</NavLink>
-            <Button
-              style={{ marginTop: '1.5rem' }}
-              $theme='selected'
-              onClick={handleToggleAmoForm}>Получать обновления</Button>
+            <NavLink to={ABOUT_ROUTE} onClick={() => setShoeBurgerMenu(false)}>
+              О нас
+            </NavLink>
+            <NavLink
+              to={SUPPORT_ROUTE}
+              onClick={() => setShoeBurgerMenu(false)}
+            >
+              Поддержать
+            </NavLink>
+            <NavLink
+              style={{ marginLeft: "auto" }}
+              onClick={() =>
+                setTimeout(() => {
+                  handleToggleAmoForm();
+                  setShoeBurgerMenu(false);
+                }, 100)
+              }
+              to={`${MAIN_ROUTE}#participate`}
+            >
+              <Button
+                style={{ marginTop: "1.5rem" }}
+                $theme="selected"
+                type="button"
+              >
+                Принять участие
+              </Button>
+            </NavLink>
           </MobileMenu>
-          : null}
+        ) : null}
       </MyContainer>
     </Wrapper>
   );
@@ -62,11 +106,15 @@ const MyContainer = styled(Container)`
   margin: 0 8vw;
   @media screen and (max-width: ${$phoneWidth}) {
     justify-content: space-between;
-     margin: 0 5vw;
+    margin: 0 5vw;
   }
   @media screen and (min-width: ${$desktopWidth}) {
     justify-content: space-between;
     margin: 0 15vw;
+  }
+  @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+    justify-content: space-between;
+    margin: 0 6.5vw;
   }
 `;
 
@@ -99,7 +147,7 @@ const Nav = styled.nav`
     cursor: pointer;
     position: relative;
     font-size: 1.6rem;
-    font-family: 'Meta Pro';
+    font-family: "Meta Pro";
     font-weight: 500;
     line-height: 1.6rem;
     color: ${$mainFontColor};
@@ -128,8 +176,8 @@ const FormBtn = styled(Button)`
 
 const MenuBtn = styled.div`
   display: none;
-  border-top: 3px solid #25612B;
-  border-bottom: 3px solid #25612B;
+  border-top: 3px solid #25612b;
+  border-bottom: 3px solid #25612b;
   width: 4.5rem;
   padding: 1rem 1rem;
   text-align: center;
@@ -140,7 +188,7 @@ const MenuBtn = styled.div`
 
 const MobileMenu = styled.div`
   position: absolute;
-  top:0;
+  top: 0;
   right: 0;
   height: auto;
   width: 20rem;
@@ -150,7 +198,7 @@ const MobileMenu = styled.div`
   > * {
     display: block;
     font-size: 1.3rem;
-    font-family: 'Meta Pro';
+    font-family: "Meta Pro";
     font-weight: 500;
     line-height: 1.6rem;
     color: ${$lightColor};
@@ -158,6 +206,6 @@ const MobileMenu = styled.div`
     width: 100%;
   }
   > a {
-   padding: 1rem 0.5rem;
-   }
- `;
+    padding: 1rem 0.5rem;
+  }
+`;

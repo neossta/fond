@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Container, TextSmall } from '../../styled/components';
 import styled from '@emotion/styled';
-import { Popsovet1, Popsovet2, Popsovet3, Popsovet4 } from '../../assets/img';
+import { Popsovet1, Popsovet2, Popsovet3, Popsovet4, Popsovet5 } from '../../assets/img';
 import { $phoneWidth, $tableWidth } from '../../styled/variables';
 import { TitleMedium } from '../../components/text/TitleMedium';
 
@@ -26,6 +26,11 @@ const config = [
     avatar: Popsovet4,
     name: 'Михаил Тихонов',
     descr: 'Советник директора Корпоративного университета московского образования',
+  },
+  {
+    avatar: Popsovet5,
+    name: 'Юрий Усков',
+    descr: 'Основатель и директор компании iSpring',
   },
 ];
 
@@ -104,7 +109,7 @@ const Name = styled.div`
     margin-top: 0.5rem;
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     line-height: 1rem;
     margin-top: 0.5rem;
   }

@@ -8,7 +8,7 @@ export default function Statisctics() {
             <TitleMedium style={{ color: $lightColor, paddingTop: '2rem' }}>Премия в цифрах</TitleMedium>
             <Row>
                 <Column style={{ flex: 1 }}>
-                    <StatiscticsBlock title='Заявки' number={1528} />
+                    <StatiscticsBlock title='Заявки' number={1582} />
                     <StatiscticsBlock title='Финалисты, представляющие небольшие города России' number={28} />
                 </Column>
                 <Column style={{ flex: 1 }}>
@@ -22,7 +22,7 @@ export default function Statisctics() {
                         <StatiscticsBlock title='Гости церемонии награждения' number={200} />
                     </Row>
                     <StatiscticsBlock title='Общий призовой фонд' number={2.9} measure="млн руб" />
-                    <StatiscticsBlock title='Заявки' number={37} measure="лет" />
+                    <StatiscticsBlock title='Средний возраст' number={37} measure="лет" />
                 </Column>
             </Row>
         </Wrapper>

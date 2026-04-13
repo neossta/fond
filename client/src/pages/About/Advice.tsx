@@ -131,7 +131,7 @@ const Name = styled.div`
     margin-top: 0.5rem;
   }
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     line-height: 1rem;
     margin-top: 0.5rem;
   }

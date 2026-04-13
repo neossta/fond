@@ -1,125 +1,107 @@
 import styled from '@emotion/styled';
 import { FC, useState } from 'react';
-import { Container, Title } from '../../styled/components';
+import { Container } from '../../styled/components';
 import { OverflowWrapper } from '../../components/animation/OverflowWrapper';
-import { IconMinus, IconPlus } from '../../icons';
-import { $phoneWidth, $primaryColor } from '../../styled/variables';
+import { ArrowDown, ArrowUp } from '../../icons';
+import { $lightColor, $phoneWidth, $primaryColor, $tableWidth } from '../../styled/variables';
 import { fadeIn } from '../../styled/animations';
-import { TeamBorder } from '../../assets/img';
 import { MAIL_LINK } from '../../utils/consts';
+import { TitleMedium } from '../../components/text/TitleMedium';
 
 const config = [
   {
-    title: 'Кто может участвовать в премии?',
+    title: 'Что такое премия «Учитель истории»?',
     descr: (
       <>
         <p>
-          Учителя истории в государственных, муниципальных и частных учреждениях среднего общего,
-          основного общего образования.
-        </p>
-        <p>
-          Преподаватели учреждений среднего профессионального образования или среднего специального
-          образования
+          Всероссийская премия «Учитель истории» — это конкурс, проводимый Благотворительным фондом им. Н. П. Румянцева, направленный на поддержку талантливых педагогов и развитие образовательной среды в России.
         </p>
       </>
     ),
   },
   {
-    title: 'Получу ли я сертификат участника?',
+    title: 'Кто может участвовать?',
     descr: (
       <>
-        <p>Да, все участники премии, прошедшие 1-й этап, получат электронные сертификаты.</p>
+        <p>К участию допускаются:</p>
+        <ul style={{ listStyleType: 'disc', paddingLeft: '2rem' }}>
+          <li style={{marginBottom: '1.3rem'}}>учителя истории государственных, муниципальных и частных школ из России и ближайшего зарубежья, преподающих на русском языке.</li>
+          <li>преподаватели истории учреждений среднего профессионального или среднего специального образования из России и ближайшего зарубежья, преподающих на русском языке.</li>
+        </ul>
       </>
     ),
   },
   {
-    title: 'У меня нет гражданства России. Могу ли я принять участие?',
+    title: 'Нужно ли платить за участие?',
+    descr: (
+      <p>Нет, участие в конкурсе абсолютно бесплатное.</p>
+    ),
+  },
+  {
+    title: 'Каковы цели конкурса?',
     descr: (
       <>
-        <p>Да, если в рамках своей профессиональной деятельности вы преподаете историю России.</p>
+        <p>
+          Мотивировать учителей к профессиональному развитию.
+        </p>
+        <ul style={{ listStyleType: 'disc', paddingLeft: '2rem', gap: '2rem' }}>
+          <li style={{marginBottom: '1.3rem'}}>Создать учительское сообщество для обмена опытом.</li>
+          <li>Поддержать педагогов, воспитывающих у учеников патриотизм и гражданственность.</li>
+        </ul>
+
       </>
     ),
   },
   {
-    title: 'В какие сроки нужно прислать задания?',
+    title: 'Какие этапы конкурса?',
     descr: (
       <>
         <p>
-          Для участия в первом этапе премии необходимо в срок до 4 ноября 2024 года оставить заявку
-          и пройти тестирование.
+          Конкурс проходит в 4 этапа:
         </p>
-        <p>
-          Для участия во втором этапе премии необходимо прислать эссе в срок до 18 ноября 2024 года.
-        </p>
-        <p>
-          Для участия в третьем этапе премии необходимо прислать методические материалы и видео
-          презентации урока в срок до 16 декабря 2024 года.
-        </p>
+        <p><b style={{fontWeight: 500}}>1. Анкета и онлайн-тестирование</b> — автоматический отбор по результатам теста. Эссе на заданную тему — проверка жюри</p>
+        <p><b style={{fontWeight: 500}}>2. Презентация урока</b> (видеозапись до 15 минут + технологическая карта)</p>
+        <p><b style={{fontWeight: 500}}>3.
+          Собеседование с жюри</b> — проверка навыков самопрезентации</p>
       </>
     ),
   },
   {
-    title: 'Я зарегистрировался, но мне не приходят материалы участника. Что делать?',
+    title: 'Когда и где состоится награждение?',
     descr: (
       <>
         <p>
-          Пожалуйста, свяжитесь с нами по почте <a href={`mailto:${MAIL_LINK}`}>{MAIL_LINK}</a>
-        </p>
-      </>
-    ),
-  },
-  {
-    title: 'Как я получу задания разных этапов?',
-    descr: (
-      <>
-        <p>
-          После регистрации с Вами свяжется специалист Фонда, передаст задания и инструкцию для их
-          выполнения.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: 'Как выявится лауреат премии и победители остальных номинаций?',
-    descr: (
-      <>
-        <p>
-          Лауреат премии, а также призеры определяются Экспертной комиссией премии. Номинации “Выбор
-          жюри” и “Лучший урок” присуждает жюри, состоящей из учителей истории, членов Румянцевского
-          кружка. В номинации “Народный выбор” побеждает лидер открытого голосования за
-          видеопрезентации уроков.
+          Торжественная церемония пройдёт в феврале 2026 года в Санкт-Петербурге в рамках Форума, организуемого Фондом.
         </p>
       </>
     ),
   },
   {
-    title: 'Как будет проходить награждение?',
+    title: 'Как проходит номинация «Народный выбор»?',
     descr: (
       <>
         <p>
-          Всех участников, успешно прошедших 3-й этап премии, мы пригласим на Форум, в рамках
-          которого состоится награждение. Форум пройдет в Москве, 22 февраля 2025 года. Билеты и
-          проживание в Москве предоставляются за счет организатора.
+          По согласованию с участниками конкурса, видеозаписи презентаций уроков будут размещены в открытом доступе. Победитель определяется по итогам онлайн-голосования.
         </p>
       </>
     ),
   },
   {
-    title: 'На что победители и призеры могут потратить средства?',
+    title: 'Кто оценивает конкурсантов?',
     descr: (
       <>
-        <p>На что угодно.</p>
+        <p>
+          Жюри конкурса, состоящие из учителей истории, в том числе финалистов премии-2024, проверяет эссе и презентации уроков, проводит собеседования.
+        </p>
+        <p>Экспертный совет Фонда наблюдает за порядком проведения и определяет лауреата премии, а также призеров.</p>
       </>
     ),
   },
   {
-    title: 'Я РАБОТАЮ НЕ В РОССИЙСКОЙ ШКОЛЕ, МОГУ ЛИ Я ПРИНЯТЬ УЧАСТИЕ?',
+    title: 'Я подал заявку. Что дальше?',
     descr: (
       <>
-        <p>
-          Да, в том случае, если вы учитель из Белоруссии или в рамках своей профессиональной
-          деятельности вы преподаете историю России
-        </p>
+        <p>В течении 2-х рабочих дней с вами свяжется наш специалист. Если этого не произошло, напишите, пожалуйста, на нашу почту <a style={{ textDecoration: 'underline' }} href={`mailto:manager@fondrumyantseva.ru`} target="_blank">manager@fondrumyantseva.ru</a></p>
       </>
     ),
   },
@@ -138,14 +120,13 @@ export const Faq: FC = () => {
 
   return (
     <Wrapper id="faq">
-      <MyTitle>f. a. q.</MyTitle>
-      <Border src={TeamBorder} />
+      <TitleMedium style={{ color: $lightColor }}>FAQ</TitleMedium>
       <Wrap>
         {config.map(({ title, descr }, index) => (
           <OverflowWrapper key={index} open={openIndex === index}>
             <Head onClick={() => toggle(index)}>
               <Label>{title}</Label>
-              <Btn>{openIndex === index ? <IconMinus /> : <IconPlus />}</Btn>
+              <Btn>{openIndex === index ? <ArrowUp strokeWidth={2} /> : <ArrowDown strokeWidth={2} />}</Btn>
             </Head>
             <Content>{descr}</Content>
           </OverflowWrapper>
@@ -156,25 +137,24 @@ export const Faq: FC = () => {
 };
 
 const Wrapper = styled(Container)`
-  display: grid;
-  align-items: center;
-  align-content: baseline;
-  grid-template-columns: auto auto 1fr;
-  gap: 1rem;
-  padding-top: 8rem;
-  @media screen and (max-width: ${$phoneWidth}) {
-    padding-top: 6rem;
-    grid-template-columns: 1fr;
+   align-items: center;
+   border-radius: 20px;
+   padding: 4rem 6rem;
+   background-color: ${$primaryColor};
+   margin-top: 8rem;
+   @media screen and (max-width: ${$phoneWidth}) {
+     flex-direction: column;
+     align-items: center;
+     height: auto;
+     max-height: none;
+     padding: 2rem 1.5rem;
+     margin-top: 4rem;
+   }
+    @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
+      padding: 2.5rem
   }
 `;
 
-const Border = styled.img`
-  height: 59.125rem;
-  transform: scale(-1);
-  @media screen and (max-width: ${$phoneWidth}) {
-    display: none;
-  }
-`;
 
 const Head = styled.div`
   cursor: pointer;
@@ -182,26 +162,24 @@ const Head = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 2rem;
-  border-bottom: 0.25rem solid ${$primaryColor};
   @media screen and (max-width: ${$phoneWidth}) {
-    padding: 1.5rem 0;
+    padding: 1.5rem 1rem;
   }
 `;
 
 const Label = styled.div`
   cursor: pointer;
-  font-size: 1.88rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  line-height: 2.81rem;
-  text-transform: uppercase;
+  line-height: 1.5rem;
+  color: ${$lightColor};
   @media screen and (max-width: ${$phoneWidth}) {
-    font-size: 1.75rem;
+    font-size: 1.3rem;
     line-height: 100%;
     margin-right: 2rem;
   }
 `;
 
-const MyTitle = styled(Title)``;
 
 const Btn = styled.div`
   cursor: pointer;
@@ -216,20 +194,29 @@ const Btn = styled.div`
   }
 `;
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+ display: flex;
+ flex-direction: column;
+ gap: 1.5rem;
+ padding-top: 4rem;
+ @media screen and (max-width: ${$phoneWidth}) {
+    padding-top: 2rem; 
+}
+ `;
 
 const Content = styled.div`
-  padding: 3rem 2rem;
-  font-size: 1.5rem;
+  padding: 0 2rem 2.5rem 2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.5rem;
-  max-width: 50.25rem;
+  max-width: 80%;
+  color: ${$lightColor};
   > *:not(:last-child) {
     margin-bottom: 1rem;
   }
   @media screen and (max-width: ${$phoneWidth}) {
-    padding: 1.5rem 0;
-    font-size: 1.25rem;
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
     line-height: 1.25rem;
   }
 `;

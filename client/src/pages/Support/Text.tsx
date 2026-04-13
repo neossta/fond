@@ -56,8 +56,8 @@ const Descr = styled.p`
   text-align: left;
   max-width: 33rem;
   @media screen and (max-width: ${$tableWidth}) {
-    font-size: 1rem;
-    line-height: 1.13rem;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
     margin-bottom: 1.25rem;
     max-width: none;
   }

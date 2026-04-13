@@ -25,3 +25,5 @@ dist-ssr
 
 
 /build/
+.vercel
+node_modules/

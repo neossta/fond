@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { calcFluidFontSize, fontFace } from './mixins';
 import emotionReset from 'emotion-reset';
 import {
+  $desctopLatgeWidth,
   $desktopWidth,
   $mainBackgroundColor,
   $mainFont,
@@ -11,7 +12,7 @@ import {
   $phoneWidth,
   $tableWidth,
 } from './variables';
-import { SCREEN_LG, SCREEN_MD, SCREEN_SM } from '../utils/consts';
+import { SCREEN_EXTRA_LG, SCREEN_LG, SCREEN_MD, SCREEN_SM } from '../utils/consts';
 import { MetaPro } from '../assets/fonts/MetaPro';
 
 export const GlobalStyles: FC = () => (
@@ -43,6 +44,9 @@ export const GlobalStyles: FC = () => (
         }
         @media screen and (max-width: ${$phoneWidth}) {
           font-size: ${calcFluidFontSize(11.9465, 20.48, 280, SCREEN_SM)};
+        }
+        @media screen and (max-width: ${$desctopLatgeWidth}) {
+          font-size: ${calcFluidFontSize(3, 16, SCREEN_LG, SCREEN_EXTRA_LG)};
         }
       }
 
@@ -87,6 +91,59 @@ export const GlobalStyles: FC = () => (
           visibility: visible !important;
         }
       } 
+        
+      /* Стилизация элементов формы amoCRM */
+#amoforms_iframe_1592870 {
+  font-family: ${$mainFont};
+  background-color: red;
+  width: 500px !important;
+}
+  #amoforms_main_wrapper {
+   background-color: red;
+  }
+
+#amoforms_iframe_1592870 input,
+#amoforms_iframe_1592870 textarea,
+#amoforms_iframe_1592870 select {
+background-color: red !important;
+  border: 2px solid #e1e5e9 !important;
+  border-radius: 6px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  transition: border-color 0.3s ease !important;
+}
+
+#amoforms_cont_1592870 input:focus,
+#amoforms_cont_1592870 textarea:focus,
+#amoforms_cont_1592870 select:focus {
+  border-color: #4a89dc !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(74, 137, 220, 0.1) !important;
+}
+
+#amoforms_cont_1592870 button {
+  background: linear-gradient(135deg, #4a89dc, #5d9cec) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 14px 28px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#amoforms_cont_1592870 button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(74, 137, 220, 0.3) !important;
+}
+
+#amoforms_cont_1592870 label {
+  font-weight: 500 !important;
+  color: #2d3748 !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
     `}
   />
 );

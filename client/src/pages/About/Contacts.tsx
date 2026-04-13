@@ -10,27 +10,30 @@ export const Contacts: FC = () => {
       <TitleMedium style={{ color: $lightColor }}>контакты</TitleMedium>
       <Content>
         <Item>
-          <Label>Для предложений о сотрудничестве: </Label>
+          <Label>Для предложений<br></br> о сотрудничестве: </Label>
           <Link href={`mailto:tihonov@fondrumyantseva.ru`} target="_blank">
             tihonov@fondrumyantseva.ru
+          </Link>
+          <Link href={`https://t.me/petrtihonov`} target="_blank">
+            Telegram
           </Link>
         </Item>
         <Item>
           <Label>По общим вопросам и конкурсу «Учитель истории»: </Label>
-          <Link href={`mailto:pr@fondrumyantseva.ru`} target="_blank">
-            pr@fondrumyantseva.ru
+          <Link href={`mailto:manager@fondrumyantseva.ru`} target="_blank">
+            manager@fondrumyantseva.ru
           </Link>
           <Link href={`https://wa.me/79931001947`} target="_blank">
             WhatsApp
           </Link>
-          <Link href={`https://t.me/PetrTikhonov_FR`} target="_blank">
+          <Link href={`https://t.me/fond_rumyantseva`} target="_blank">
             Telegram
           </Link>
         </Item>
         <Item>
           <Label>Для прессы</Label>
-          <Link href={`mailto:manager@fondrumyantseva.ru`} target="_blank">
-            manager@fondrumyantseva.ru
+          <Link href={`mailto:pr@fondrumyantseva.ru`} target="_blank">
+            pr@fondrumyantseva.ru
           </Link>
         </Item>
         <Item>
@@ -103,7 +106,7 @@ const Link = styled.a`
   font-weight: 400;
   line-height: 1.3rem;
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     line-height: 0.9rem;
  }
 `;
@@ -114,7 +117,7 @@ const Label = styled.span`
   line-height: 1.3rem;
   margin-bottom: 3rem;
   @media screen and (min-width: ${$phoneWidth}) and (max-width: ${$tableWidth}) {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.1rem;
   }
